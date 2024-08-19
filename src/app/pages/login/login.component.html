@@ -1,0 +1,70 @@
+<div class="max-w-md mx-auto">
+  <div class="bg-white p-6 rounded-lg shadow-md">
+    <img
+      id="profile-img"
+      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      class="w-24 h-24 mx-auto rounded-full mb-6"
+    />
+    @if (!isLoggedIn) {
+    <form
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="mb-4">
+        <label for="email" class="block text-gray-700">Email</label>
+        <input
+          type="text"
+          class="form-input mt-1 block w-full"
+          name="email"
+          [(ngModel)]="form.email"
+          required
+          #email="ngModel"
+          [ngClass]="{ 'border-red-500': f.submitted && email.errors }"
+        />
+        @if (email.errors && f.submitted) {
+        <div class="text-red-500 text-sm mt-1">Email is required!</div>
+        }
+      </div>
+      <div class="mb-4">
+        <label for="password" class="block text-gray-700">Password</label>
+        <input
+          type="password"
+          class="form-input mt-1 block w-full"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          minlength="4"
+          #password="ngModel"
+          [ngClass]="{ 'border-red-500': f.submitted && password.errors }"
+        />
+        @if (password.errors && f.submitted) {
+        <div class="text-red-500 text-sm mt-1">
+          @if (password.errors['required']) {
+          <div>Password is required</div>
+          }
+          @if (password.errors['minlength']) {
+          <div>Password must be at least 6 characters</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="mb-4">
+        <button class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Login</button>
+      </div>
+      <div class="mb-4">
+        @if (f.submitted && isLoginFailed) {
+        <div class="bg-red-100 text-red-700 p-3 rounded" role="alert">
+          Login failed: {{ errorMessage }}
+        </div>
+        }
+      </div>
+    </form>
+    } @else {
+    <div class="bg-green-100 text-green-700 p-3 rounded">
+      Logged in as {{ roles }}.
+    </div>
+    }
+  </div>
+</div>

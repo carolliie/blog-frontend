@@ -1,0 +1,87 @@
+<div class="max-w-md mx-auto">
+  <div class="bg-white p-6 rounded-lg shadow-md">
+    <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      class="w-24 h-24 mx-auto rounded-full mb-6" />
+    @if (!isSuccessful) {
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="mb-4">
+        <label for="username" class="block text-gray-700">Username</label>
+        <input type="text" class="form-input mt-1 block w-full" name="username" [(ngModel)]="form.username" required
+          minlength="3" maxlength="20" #username="ngModel"
+          [ngClass]="{ 'border-red-500': f.submitted && username.errors }" />
+        @if (username.errors && f.submitted) {
+        <div class="text-red-500 text-sm mt-1">
+          @if (username.errors['required']) {
+          <div>Username is required</div>
+          }
+          @if (username.errors['minlength']) {
+          <div>Username must be at least 3 characters</div>
+          }
+          @if (username.errors['maxlength']) {
+          <div>Username must be at most 20 characters</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="mb-4">
+        <label for="email" class="block text-gray-700">Email</label>
+        <input type="email" class="form-input mt-1 block w-full" name="email" [(ngModel)]="form.email" required email
+          #email="ngModel" [ngClass]="{ 'border-red-500': f.submitted && email.errors }" />
+        @if (email.errors && f.submitted) {
+        <div class="text-red-500 text-sm mt-1">
+          @if (email.errors['required']) {
+          <div>Email is required</div>
+          }
+          @if (email.errors['email']) {
+          <div>Email must be a valid email address</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="mb-4">
+        <label for="password" class="block text-gray-700">Password</label>
+        <input type="password" class="form-input mt-1 block w-full" name="password" [(ngModel)]="form.password" required
+          minlength="6" #password="ngModel" [ngClass]="{ 'border-red-500': f.submitted && password.errors }" />
+        @if (password.errors && f.submitted) {
+        <div class="text-red-500 text-sm mt-1">
+          @if (password.errors['required']) {
+          <div>Password is required</div>
+          }
+          @if (password.errors['minlength']) {
+          <div>Password must be at least 6 characters</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="mb-4">
+        <label for="role" class="block text-gray-700">Role</label>
+        <input type="role" class="form-input mt-1 block w-full" name="role" [(ngModel)]="form.role" required
+          minlength="4" #role="ngModel" [ngClass]="{ 'border-red-500': f.submitted && role.errors }" />
+        @if (role.errors && f.submitted) {
+        <div class="text-red-500 text-sm mt-1">
+          @if (role.errors['required']) {
+          <div>Role is required</div>
+          }
+          @if (role.errors['minlength']) {
+          <div>Role must be at least 4 characters</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="mb-4">
+        <button class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Sign Up</button>
+      </div>
+
+      @if (f.submitted && isSignUpFailed) {
+      <div class="bg-yellow-100 text-yellow-700 p-3 rounded">
+        Signup failed!<br />{{ errorMessage }}
+      </div>
+      }
+    </form>
+    } @else {
+    <div class="bg-green-100 text-green-700 p-3 rounded">
+      Your registration is successful!
+    </div>
+    }
+  </div>
+</div>
