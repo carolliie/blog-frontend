@@ -14,12 +14,13 @@ export class ViewAllComponent implements OnInit{
 
   allPosts: any;
   post: any;
-
+  images: { [key: string]: string } = {}; 
 
   constructor(private postService: PostService){}
 
   ngOnInit() {
     this.getAllPosts();
+    console.log('All posts:', this.getAllPosts());
   }
 
   getAllPosts() {
@@ -39,5 +40,4 @@ export class ViewAllComponent implements OnInit{
       console.error('Method not implemented.');
     })
   }
-
 }

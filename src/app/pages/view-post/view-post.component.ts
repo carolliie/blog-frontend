@@ -14,8 +14,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 export class ViewPostComponent implements OnInit {
   post: any;
 
-
-  constructor(private postService: PostService, private route: ActivatedRoute){}
+  constructor(private postService: PostService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -29,7 +28,7 @@ export class ViewPostComponent implements OnInit {
     });
   }
 
-  getPostById(id:number) {
+  getPostById(id: number) {
     this.postService.getPostById(id).subscribe(res => {
       console.log(res);
       this.post = res;

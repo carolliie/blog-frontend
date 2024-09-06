@@ -2,25 +2,27 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PostService } from '../../service/post.service';
+import { userInfo } from 'os';
+import { StorageService } from '../_services/storage.service';
 
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
   styleUrls: ['./create-post.component.css'],
-  standalone: true,  
-  imports: [CommonModule, ReactiveFormsModule] 
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule]
 })
 export class CreatePostComponent {
   postForm: FormGroup;
   tags: string[] = [];
   tagControl: FormControl;
+  message = '';
 
-  constructor(private fb: FormBuilder, private postService: PostService) {
+  constructor(private fb: FormBuilder, private postService: PostService, private storageService: StorageService) {
     this.postForm = this.fb.group({
       name: [null, Validators.required],
       content: [null, [Validators.required, Validators.maxLength(5000)]],
-      img: [null, Validators.required],
-      posted_by: [null, Validators.required]
+      img: [null, Validators.required]
     });
     this.tagControl = new FormControl('');
   }
@@ -40,21 +42,38 @@ export class CreatePostComponent {
   }
 
   onSubmit(): void {
-    if (this.postForm.valid) {
-      const formValue = this.postForm.value;
-      formValue.tags = this.tags;  // Inclui as tags no valor do formulário
-      console.log('Form Submitted', formValue);
+    if (this.storageService.isLoggedIn()) {
+      if (this.postForm.valid) {
+        const formValue = this.postForm.value;
+        formValue.tags = this.tags;  // Inclui as tags no valor do formulário
+        this.message = "Form Submitted", formValue;
 
-      const payload = {
-        ...formValue,
-        posted_by: formValue.posted_by,
-        tags: formValue.tags
+        const payload = {
+          ...formValue,
+          tags: formValue.tags
+        };
+
+        this.postService.createNewPost(payload).subscribe(response => {
+          this.message = "Post created successfully", response;
+        });
+      }
+    }
+  }
+
+  
+  imageUrl: string | ArrayBuffer | null = null;
+
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = (e: any) => {
+        this.imageUrl = reader.result as string;
       };
 
-      // Aqui você pode chamar um método do PostService para processar os dados do formulário
-      this.postService.createNewPost(payload).subscribe(response => {
-        console.log('Post created successfully', response);
-      });
+      reader.readAsDataURL(file);
     }
   }
 }

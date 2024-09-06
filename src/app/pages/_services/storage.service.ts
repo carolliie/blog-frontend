@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 
-const USER_KEY = 'auth-user';
-
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
+  private USER_KEY = 'auth-data';
+
   constructor() {}
 
   private isBrowser(): boolean {
@@ -20,24 +20,33 @@ export class StorageService {
 
   public saveUser(user: any): void {
     if (this.isBrowser()) {
-      window.sessionStorage.removeItem(USER_KEY);
-      window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+      const userObj = {
+        token: user.token,
+        role: user.role
+      };
+      window.sessionStorage.removeItem(this.USER_KEY);
+      window.sessionStorage.setItem(this.USER_KEY, JSON.stringify(userObj));
     }
   }
 
   public getUser(): any {
     if (this.isBrowser()) {
-      const user = window.sessionStorage.getItem(USER_KEY);
+      const user = window.sessionStorage.getItem(this.USER_KEY);
       if (user) {
-        return JSON.parse(user);
+        const userObj = JSON.parse(user);
+        return {
+          token: userObj.token,
+          role: userObj.role
+        };
       }
     }
     return null;
   }
 
+
   public isLoggedIn(): boolean {
     if (this.isBrowser()) {
-      const user = window.sessionStorage.getItem(USER_KEY);
+      const user = window.sessionStorage.getItem(this.USER_KEY);
       return !!user;
     }
     return false;

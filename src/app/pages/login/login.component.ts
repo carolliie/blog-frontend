@@ -20,14 +20,14 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  roles: string[] = [];
+  role: any;
 
   constructor(private authService: AuthService, private storageService: StorageService) { }
 
   ngOnInit(): void {
     if (this.storageService.isLoggedIn()) {
       this.isLoggedIn = true;
-      this.roles = this.storageService.getUser().roles;
+      this.role = this.storageService.getUser().role;
     }
   }
 
@@ -40,11 +40,10 @@ export class LoginComponent implements OnInit {
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.roles = this.storageService.getUser().roles;
+        this.role = this.storageService.getUser().role;
         this.reloadPage();
       },
       error: err => {
-        // Verificação para garantir que err.error existe e tem a propriedade 'message'
         this.errorMessage = err.error?.message || 'An error occurred during login.';
         this.isLoginFailed = true;
       }

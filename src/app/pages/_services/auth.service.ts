@@ -19,7 +19,7 @@ export class AuthService {
       AUTH_API + 'login',
       {
         email,
-        password,
+        password
       },
       httpOptions
     );

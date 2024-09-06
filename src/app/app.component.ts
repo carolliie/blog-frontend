@@ -18,7 +18,7 @@ import { EventBusService } from './pages/_shared/event-bus.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent{
-  title = 'blogWeb'; private roles: string[] = [];
+  title = 'blogWeb'; private role: any;
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;
@@ -37,10 +37,10 @@ export class AppComponent{
 
     if (this.isLoggedIn) {
       const user = this.storageService.getUser();
-      this.roles = user.roles;
+      this.role = user.role;
 
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+      this.showAdminBoard = this.role.includes('admin');
+      this.showModeratorBoard = this.role.includes('user');
 
       this.username = user.username;
     }
@@ -62,5 +62,22 @@ export class AppComponent{
         console.log(err);
       }
     });
+  }
+
+  imageUrl: string | ArrayBuffer | null = null;
+
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      // Usando FileReader para criar um Blob URL
+      reader.onload = (e: any) => {
+        this.imageUrl = reader.result as string;  // Blob URL criado a partir do arquivo
+      };
+
+      reader.readAsDataURL(file);  // Converte o arquivo em Data URL (Blob URL)
+    }
   }
 }
