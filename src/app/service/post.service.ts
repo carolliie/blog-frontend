@@ -32,4 +32,26 @@ export class PostService {
   getPostById(id:number): Observable<any> {
     return this.http.get(BASIC_URL + `api/posts/` + id);
   }
+
+  deletePostById(id: number): Observable<any> {
+    const token = this.storageService.getUser().token;
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.delete(BASIC_URL + `api/posts/delete/` + id, { headers });
+  }
+
+  editPostById(id: number, data: any): Observable<any> {
+    const token = this.storageService.getUser().token;
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.patch(BASIC_URL + `api/posts/edit/${id}`, data, { headers });
+  }
 }

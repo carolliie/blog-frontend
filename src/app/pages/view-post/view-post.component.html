@@ -8,5 +8,26 @@
             </div>
             <p class="text-gray-600 mt-4">{{ post.content }}</p>
         </div>
+
+        @if (isLoggedIn) {
+        <ul class="flex space-x-4 mt-2 ml-auto text-black">
+            <li>
+                <a href="/edit-post/{{post.id}}" class="hover:underline" routerLink="/edit-post/{{post.id}}" routerLinkActive="/edit-post/{{post.id}}">Edit post</a>
+            </li>
+
+            <li>
+                <a href="/delete-post" class="hover:underline" routerLink="/delete-post" routerLinkActive="/delete-post"
+                    (click)="deletePostById(post.id)">Delete post</a>
+            </li>
+        </ul>
+        }
+
+        @if (message) {
+        <ul class="flex space-x-4 mt-2 ml-auto text-black">
+            <li>
+                {{ message }}
+            </li>
+        </ul>
+        }
     </div>
 </div>

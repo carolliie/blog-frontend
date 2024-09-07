@@ -1,0 +1,58 @@
+<form [formGroup]="postForm" (ngSubmit)="onSubmit()" class="container w-1/2 align-center justify-center mx-auto border-gray-900/10 p-6">
+    <div class="space-y-12" appearance="fill">
+      <div class="border-b border-gray-900/10 pb-12">
+        <h2 class="text-base font-semibold leading-7 text-gray-900">Edit Post</h2>
+        <p class="mt-1 text-sm leading-6 text-gray-600">Fill out the information below to edit a new post.</p>
+  
+        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6" appearance="fill">
+          <div class="sm:col-span-4">
+            <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Name</label>
+            <div class="mt-2">
+              <input type="text" name="name" id="name" formControlName="name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            </div>
+          </div>
+  
+          <div class="col-span-full" appearance="fill">
+            <label for="image" class="block text-sm font-medium leading-6 text-gray-900">Image</label>
+            <div class="mt-2">
+              <input type="file" name="image" id="image" formControlName="img" class="block w-full text-gray-900 sm:text-sm sm:leading-6" (change)="onFileSelected($event)">
+              <input type="text" name="image" id="image" formControlName="img" class="block w-full text-gray-900 sm:text-sm sm:leading-6" (change)="onFileSelected($event)" placeholder="Or enter image url">
+              <img *ngIf="imageUrl" [src]="imageUrl" alt="Selected Image" />
+            </div>
+          </div>
+  
+          <div class="col-span-full" appearance="fill">
+            <label for="content" class="block text-sm font-medium leading-6 text-gray-900">Content</label>
+            <div class="mt-2">
+              <textarea id="content" name="content" rows="5" formControlName="content" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+            </div>
+          </div>
+  
+          <div class="col-span-full" appearance="fill">
+            <label for="tags" class="block text-sm font-medium leading-6 text-gray-900">Tags</label>
+            <div class="mt-2">
+              <div *ngFor="let tag of tags; let i = index" class="flex items-center space-x-2 mb-2">
+                <span class="block rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6">{{ tag }}</span>
+                <button type="button" (click)="removeTag(i)" class="text-sm font-semibold leading-6 text-gray-900">Remove</button>
+              </div>
+              <input type="text" [formControl]="tagControl" (keyup.enter)="addTag()" placeholder="New Tag..." class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            </div>
+          </div>
+  
+          <div class="mb-4 w-96">
+            @if (message) {
+              <div class="bg-green-100 text-green-700 p-3 rounded w-full" role="alert">
+                Log: {{ message }}
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="mt-6 flex items-center justify-end gap-x-6">
+      <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
+      <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" [disabled]="!postForm.valid">Edit Post</button>
+    </div>
+  </form>
+  
