@@ -33,6 +33,10 @@ export class PostService {
     return this.http.get(BASIC_URL + `api/posts/` + id);
   }
 
+  getPostByName(id:number, slug:string): Observable<any> {
+    return this.http.get(BASIC_URL + `api/posts/${id}/${slug}`);
+  }
+
   deletePostById(id: number): Observable<any> {
     const token = this.storageService.getUser().token;
 

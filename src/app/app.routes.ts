@@ -16,7 +16,7 @@ export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'create-post', component: CreatePostComponent },
   { path: 'view-all', component: ViewAllComponent},
-  { path: 'view-post/:id', component: ViewPostComponent},
+  { path: 'view-post/:id/:slug', component: ViewPostComponent},
   { path: 'delete-post', component: DeletePostComponent},
   { path: 'edit-post/:id', component: EditPostComponent},
   { path: 'login', component: LoginComponent},

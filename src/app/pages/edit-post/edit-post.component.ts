@@ -36,10 +36,11 @@ export class EditPostComponent implements OnInit {
         this.postService.getPostById(+id).subscribe(post => {
           this.postForm.patchValue({
             name: post.name,
+            img: post.img,
             content: post.content
           });
           this.tags = post.tags || [];
-          this.imageUrl = post.img;
+          //this.imageUrl = post.img;
         })
       }
     });
@@ -59,9 +60,9 @@ export class EditPostComponent implements OnInit {
     }
   }
 
-  imageUrl: string | ArrayBuffer | null = null;
+  //imageUrl: string | ArrayBuffer | null = null;
 
-  onFileSelected(event: any): void {
+  /*onFileSelected(event: any): void {
     const file = event.target.files[0];
 
     if (file) {
@@ -73,7 +74,7 @@ export class EditPostComponent implements OnInit {
 
       reader.readAsDataURL(file);
     }
-  }
+  }*/
 
   onSubmit(): void {
 
@@ -81,7 +82,6 @@ export class EditPostComponent implements OnInit {
       if (this.postForm.valid) {
         const formValue = this.postForm.value;
         formValue.tags = this.tags;
-        formValue.img = this.imageUrl || formValue.img;
         this.message = "Form Submitted", formValue;
 
         const payload = {

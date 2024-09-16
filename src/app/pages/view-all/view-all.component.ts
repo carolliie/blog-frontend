@@ -32,12 +32,21 @@ export class ViewAllComponent implements OnInit{
     })
   }
 
-  getPostById(id:number) {
+  /*getPostById(id:number) {
     this.postService.getPostById(id).subscribe(res => {
       console.log(res);
       this.post = res;
     }, error => {
       console.error('Method not implemented.');
     })
-  }
+  }*/
+
+    getPostByName(id:number, slug:string) {
+      this.postService.getPostByName(id, slug).subscribe(res => {
+        console.log(res);
+        this.post = res;
+      }, error => {
+        console.error('Method not implemented.');
+      })
+    }
 }
