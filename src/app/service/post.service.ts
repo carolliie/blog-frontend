@@ -29,12 +29,12 @@ export class PostService {
     return this.http.get(BASIC_URL + `api/posts`);
   }
 
-  getPostById(id:number): Observable<any> {
+  /*getPostById(id:number): Observable<any> {
     return this.http.get(BASIC_URL + `api/posts/` + id);
-  }
+  }*/
 
-  getPostByName(id:number, slug:string): Observable<any> {
-    return this.http.get(BASIC_URL + `api/posts/${id}/${slug}`);
+  getPostBySlug(slug:string): Observable<any> {
+    return this.http.get(BASIC_URL + `api/posts/${slug}`);
   }
 
   deletePostById(id: number): Observable<any> {
@@ -48,7 +48,7 @@ export class PostService {
     return this.http.delete(BASIC_URL + `api/posts/delete/` + id, { headers });
   }
 
-  editPostById(id: number, data: any): Observable<any> {
+  editPostBySlug(slug: string, data: any): Observable<any> {
     const token = this.storageService.getUser().token;
 
     const headers = new HttpHeaders({
@@ -56,6 +56,6 @@ export class PostService {
       'Authorization': `Bearer ${token}`
     });
 
-    return this.http.patch(BASIC_URL + `api/posts/edit/${id}`, data, { headers });
+    return this.http.patch(BASIC_URL + `api/posts/edit/${slug}`, data, { headers });
   }
 }

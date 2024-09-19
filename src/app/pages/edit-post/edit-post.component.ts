@@ -4,13 +4,14 @@ import { CommonModule } from '@angular/common';
 import { PostService } from '../../service/post.service';
 import { StorageService } from '../_services/storage.service';
 import { ActivatedRoute } from '@angular/router';
+import { QuillModule } from 'ngx-quill';
 
 @Component({
   selector: 'app-edit-post',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, QuillModule],
   templateUrl: './edit-post.component.html',
-  styleUrl: './edit-post.component.css'
+  styleUrls: ['./edit-post.component.css']
 })
 export class EditPostComponent implements OnInit {
 
@@ -19,8 +20,12 @@ export class EditPostComponent implements OnInit {
   tagControl: FormControl;
   message = '';
 
-
-  constructor(private fb: FormBuilder, private postService: PostService, private storageService: StorageService, private route: ActivatedRoute) {
+  constructor(
+    private fb: FormBuilder, 
+    private postService: PostService, 
+    private storageService: StorageService, 
+    private route: ActivatedRoute
+  ) {
     this.postForm = this.fb.group({
       name: [null, Validators.required],
       content: [null, [Validators.required, Validators.maxLength(5000)]],
@@ -31,17 +36,18 @@ export class EditPostComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      const id = params.get("id");
-      if (id) {
-        this.postService.getPostById(+id).subscribe(post => {
+      const slug = params.get("slug");
+      if (slug) {
+        this.postService.getPostBySlug(slug).subscribe(post => {
           this.postForm.patchValue({
             name: post.name,
             img: post.img,
             content: post.content
           });
           this.tags = post.tags || [];
-          //this.imageUrl = post.img;
-        })
+        }, error => {
+          console.error("Error fetching post by slug:", error);
+        });
       }
     });
   }
@@ -60,45 +66,29 @@ export class EditPostComponent implements OnInit {
     }
   }
 
-  //imageUrl: string | ArrayBuffer | null = null;
+  onSubmit(): void {
+    if (this.storageService.isLoggedIn()) {
+      if (!this.postForm.valid) {
+        this.message = "Form is invalid. Please check the fields.";
+        return;
+      }
+      
+      const formValue = this.postForm.value;
+      formValue.tags = this.tags;
+      this.message = "Form Submitted";
 
-  /*onFileSelected(event: any): void {
-    const file = event.target.files[0];
-
-    if (file) {
-      const reader = new FileReader();
-
-      reader.onload = (e: any) => {
-        this.imageUrl = reader.result as string;
+      const payload = {
+        ...formValue,
+        tags: formValue.tags
       };
 
-      reader.readAsDataURL(file);
-    }
-  }*/
-
-  onSubmit(): void {
-
-    if (this.storageService.isLoggedIn()) {
-      if (this.postForm.valid) {
-        const formValue = this.postForm.value;
-        formValue.tags = this.tags;
-        this.message = "Form Submitted", formValue;
-
-        const payload = {
-          ...formValue,
-          tags: formValue.tags
-        };
-
-        const postId = this.route.snapshot.paramMap.get("id");
-        if (postId) {
-          this.postService.editPostById(+postId, payload).subscribe(response => {
-            this.message = "Post updated successfully", response;
-          }, (error: { message: string; }) => {
-            this.message = "Error updating post:" + error.message;
-          });
-        } else {
-          this.message = "Form is invalid. Please check the fields.";
-        }
+      const postSlug = this.route.snapshot.paramMap.get("slug");
+      if (postSlug) {
+        this.postService.editPostBySlug(postSlug, payload).subscribe(response => {
+          this.message = "Post updated successfully";
+        }, (error: { message: string; }) => {
+          this.message = "Error updating post: " + error.message;
+        });
       }
     }
   }

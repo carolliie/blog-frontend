@@ -39,40 +39,26 @@ export class CreatePostComponent {
       this.tags.splice(index, 1);
     }
   }
-  
-  imageUrl: string | ArrayBuffer | null = null;
-
-  onFileSelected(event: any): void {
-    const file = event.target.files[0];
-
-    if (file) {
-      const reader = new FileReader();
-
-      reader.onload = (e: any) => {
-        this.imageUrl = reader.result as string;
-      };
-
-      reader.readAsDataURL(file);
-    }
-  }
 
   onSubmit(): void {
     if (this.storageService.isLoggedIn()) {
-      if (this.postForm.valid) {
-        const formValue = this.postForm.value;
-        formValue.tags = this.tags;
-        formValue.img = this.imageUrl;
-        this.message = "Form Submitted", formValue;
-
-        const payload = {
-          ...formValue,
-          tags: formValue.tags
-        };
-
-        this.postService.createNewPost(payload).subscribe(response => {
-          this.message = "Post created successfully", response;
-        });
+      if (!this.postForm.valid) {
+        this.message = "Form is invalid. Please check the fields.";
+        return;
       }
+
+      const formValue = this.postForm.value;
+      formValue.tags = this.tags;
+      this.message = "Form Submitted";
+
+      const payload = {
+        ...formValue,
+        tags: formValue.tags
+      };
+
+      this.postService.createNewPost(payload).subscribe(response => {
+        this.message = "Post created successfully", response;
+      });
     }
   }
 }

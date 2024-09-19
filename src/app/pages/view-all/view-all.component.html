@@ -1,7 +1,7 @@
 <div
   class="posts grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 mx-auto mt-10 max-w-7xl border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16">
   <a *ngFor="let item of allPosts" class="max-w-xl flex flex-col items-start justify-between"
-    [routerLink]="['/view-post', item.id, item.slug]">
+    [routerLink]="['/view-post', item.slug]">
     <article>
       <div class="flex flex-col items-start gap-x-4 text-xs">
         <img [src]="item.img" alt="post photo" class="h-72 w-80">

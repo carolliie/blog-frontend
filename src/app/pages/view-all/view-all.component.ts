@@ -41,8 +41,8 @@ export class ViewAllComponent implements OnInit{
     })
   }*/
 
-    getPostByName(id:number, slug:string) {
-      this.postService.getPostByName(id, slug).subscribe(res => {
+    getPostBySlug(slug:string) {
+      this.postService.getPostBySlug(slug).subscribe(res => {
         console.log(res);
         this.post = res;
       }, error => {

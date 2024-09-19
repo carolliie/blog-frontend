@@ -22,18 +22,37 @@ export class ViewPostComponent implements OnInit {
   ngOnInit() {
     this.isLoggedIn = this.storageService.isLoggedIn();
     this.route.paramMap.subscribe(params => {
-      const idParam = params.get('id');
-      const id = idParam ? +idParam : null;
-      if (id !== null) {
-        this.getPostById(id);
+      const slugParam = params.get('slug');
+      
+      if (slugParam !== null) {
+        this.getPostBySlug(slugParam);
       } else {
-        console.error('ID do post não foi fornecido ou é inválido.');
+        console.error('Slug do post não foi fornecido ou é inválido.');
       }
     });
   }
+  
+  getPostBySlug(slug: string) {
+    this.postService.getPostBySlug(slug).subscribe(res => {
+      console.log(res);
+      this.post = res;
+    }, error => {
+      console.error('Erro ao obter post:', error); 
+    });
+  }
+  
 
-  getPostById(id: number) {
+  /*getPostById(id: number) {
     this.postService.getPostById(id).subscribe(res => {
+      console.log(res);
+      this.post = res;
+    }, error => {
+      console.error('Method not implemented.');
+    })
+  }*/
+
+  editPostBySlug(slug: string, data: any) {
+    this.postService.editPostBySlug(slug, data).subscribe(res => {
       console.log(res);
       this.post = res;
     }, error => {
@@ -42,11 +61,11 @@ export class ViewPostComponent implements OnInit {
   }
 
   deletePostById(id: number) {
-    if (confirm('Are you sure you want to delete this post?')) { // Confirmação antes de excluir
+    if (confirm('Are you sure you want to delete this post?')) {
       this.postService.deletePostById(id).subscribe({
         next: () => {
           this.message = 'Post deleted successfully';
-          this.router.navigate(['/view-all']); // Redireciona para a lista de posts ou outra página
+          this.router.navigate(['/view-all']);
         },
         error: (err) => {
           this.message = 'Failed to delete post:', err;
