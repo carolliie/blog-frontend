@@ -4,14 +4,23 @@ import { CommonModule } from '@angular/common';
 import { PostService } from '../../service/post.service';
 import { StorageService } from '../_services/storage.service';
 import { ActivatedRoute } from '@angular/router';
-import { QuillModule } from 'ngx-quill';
+import { EditorComponent, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 
 @Component({
   selector: 'app-edit-post',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, QuillModule],
+  imports: [CommonModule, ReactiveFormsModule, EditorComponent],
   templateUrl: './edit-post.component.html',
-  styleUrls: ['./edit-post.component.css']
+  styleUrls: ['./edit-post.component.css'],
+  providers: [
+    { provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' }
+  ],
+  template: `
+  <h1>TinyMCE 7 Angular Demo</h1>
+  <editor
+    [init]="init"
+  />
+  `
 })
 export class EditPostComponent implements OnInit {
 
@@ -19,6 +28,14 @@ export class EditPostComponent implements OnInit {
   tags: string[] = [];
   tagControl: FormControl;
   message = '';
+
+  init: EditorComponent['init'] = {
+    plugins: 'lists link image table code help wordcount',
+    base_url: '/tinymce', // Root for resources
+    suffix: '.min',
+    selector: 'editor',  // change this value according to your HTML
+    license_key: 'gpl'
+  };
 
   constructor(
     private fb: FormBuilder, 

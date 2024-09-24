@@ -3,19 +3,38 @@ import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } 
 import { CommonModule } from '@angular/common';
 import { PostService } from '../../service/post.service';
 import { StorageService } from '../_services/storage.service';
+import { EditorComponent, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
   styleUrls: ['./create-post.component.css'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule]
+  imports: [CommonModule, ReactiveFormsModule, EditorComponent],
+  providers: [
+    { provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' }
+  ],
+  template: `
+  <h1>TinyMCE 7 Angular Demo</h1>
+  <editor
+    [init]="init"
+  />
+  `
 })
+
 export class CreatePostComponent {
   postForm: FormGroup;
   tags: string[] = [];
   tagControl: FormControl;
   message = '';
+
+  init: EditorComponent['init'] = {
+    plugins: 'lists link image table code help wordcount',
+    base_url: '/tinymce', // Root for resources
+    suffix: '.min',
+    selector: 'editor',  // change this value according to your HTML
+    license_key: 'gpl'
+  };
 
   constructor(private fb: FormBuilder, private postService: PostService, private storageService: StorageService) {
     this.postForm = this.fb.group({

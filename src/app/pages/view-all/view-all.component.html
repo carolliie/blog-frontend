@@ -16,10 +16,7 @@
             {{ item.name }}
           </a>
         </h6>
-        <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
-          {{ item.content ? (item.content.length > 600 ? item.content.substr(0, 600) + '...' : item.content) : ''}}
-        </p>
-
+        <div class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600" [innerHTML]="item.content ? (item.content.length > 600 ? item.content.substr(0, 600) + '...' : item.content) : ''"></div>
       </div>
     </article>
   </a>

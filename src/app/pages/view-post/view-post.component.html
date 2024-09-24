@@ -6,7 +6,7 @@
             <div class="mb-4">
                 <span class="text-gray-500 text-sm">Publicado em: {{ post.date | date:'medium' }}</span>
             </div>
-            <p class="text-gray-600 mt-4">{{ post.content }}</p>
+            <div class="text-gray-600 mt-4" [innerHTML]="post.content"></div>
         </div>
 
         @if (isLoggedIn) {
