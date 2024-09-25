@@ -17,6 +17,18 @@ export class ViewPostComponent implements OnInit {
   isLoggedIn = false;
   message = "";
 
+  getFirstParagraph(): string {
+    const paragraph = this.post.content;
+    const firstParagraph = paragraph.split('</p>')[0] + '</p>';
+    return firstParagraph;
+  }
+
+  getContentWithoutFirstParagraph(): string {
+    const paragraphs = this.post.content.split('</p>');
+    paragraphs.shift();
+    return paragraphs.join('</p>');
+  }
+
   constructor(private postService: PostService, private route: ActivatedRoute, private storageService: StorageService, private router: Router) { }
 
   ngOnInit() {

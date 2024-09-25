@@ -22,18 +22,18 @@
           <div class="col-span-full" appearance="fill">
             <label for="content" class="block text-sm font-medium leading-6 text-gray-900">Content</label>
             <div class="mt-2">
-              <editor [init]="init" id="content" name="content" rows="5" formControlName="content" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></editor>
+              <editor [init]="init" id="content" name="content" formControlName="content" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></editor>
             </div>
           </div>
   
           <div class="col-span-full" appearance="fill">
-            <label for="tag" class="block text-sm font-medium leading-6 text-gray-900">Tags</label>
+            <label for="tags" class="block text-sm font-medium leading-6 text-gray-900">Tags</label>
             <div class="mt-2">
               <div *ngFor="let tag of tags; let i = index" class="flex items-center space-x-2 mb-2">
                 <span class="block rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6">{{ tag }}</span>
                 <button type="button" (click)="removeTag(i)" class="text-sm font-semibold leading-6 text-gray-900">Remove</button>
               </div>
-              <input type="text" id="tag" [formControl]="tagControl" (keyup.enter)="addTag()" placeholder="New Tag..." class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <input type="text" id="tags" [formControl]="tagControl" (keyup.enter)="addTag()" placeholder="New Tag..." class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
             </div>
           </div>
   
@@ -49,7 +49,7 @@
     </div>
   
     <div class="mt-6 flex items-center justify-end gap-x-6">
-      <a type="button" class="text-sm font-semibold leading-6 text-gray-900" href="view-all">Cancel</a>
+      <a type="button" class="text-sm font-semibold leading-6 text-gray-900" href="/view-all">Cancel</a>
       <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" [disabled]="!postForm.valid">Edit Post</button>
     </div>
   </form>

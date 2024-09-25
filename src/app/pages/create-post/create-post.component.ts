@@ -30,16 +30,16 @@ export class CreatePostComponent {
 
   init: EditorComponent['init'] = {
     plugins: 'lists link image table code help wordcount',
-    base_url: '/tinymce', // Root for resources
+    base_url: '/tinymce',
     suffix: '.min',
-    selector: 'editor',  // change this value according to your HTML
+    selector: 'editor',
     license_key: 'gpl'
   };
 
   constructor(private fb: FormBuilder, private postService: PostService, private storageService: StorageService) {
     this.postForm = this.fb.group({
       name: [null, Validators.required],
-      content: [null, [Validators.required, Validators.maxLength(5000)]],
+      content: [null, [Validators.required, Validators.maxLength(150000)]],
       img: [null, Validators.required]
     });
     this.tagControl = new FormControl('');

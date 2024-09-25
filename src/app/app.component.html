@@ -5,21 +5,8 @@
       <li>
         <a href="/view-all" class="hover:underline" routerLink="/view-all" routerLinkActive="/view-all">Home</a>
       </li>
-      @if (showAdminBoard) {
-        <li>
-          <a href="/admin" class="hover:underline" routerLink="/admin" routerLinkActive="/admin">Admin Board</a>
-        </li>
-      }
-      @if (showModeratorBoard) {
-        <li>
-          <a href="/mod" class="hover:underline" routerLink="/mod" routerLinkActive="/mod">Moderator Board</a>
-        </li>
-      }
-      @if (isLoggedIn) {
-        <li>
-          <a href="/user" class="hover:underline" routerLink="/user" routerLinkActive="/user">User</a>
-        </li>
 
+      @if (isLoggedIn) {
         <li>
           <a href="/create-post" class="hover:underline" routerLink="/create-post" routerLinkActive="/create-post">Create Post</a>
         </li>
@@ -38,16 +25,13 @@
     } @else {
       <ul class="flex space-x-4 mt-2 ml-auto text-white">
         <li>
-          <a href="/profile" class="hover:underline" routerLink="/profile" routerLinkActive="/profile">{{ username }}</a>
-        </li>
-        <li>
-          <a href="#" class="hover:underline" (click)="logout()">LogOut</a>
+          <a href="/login" class="hover:underline" (click)="logout()">LogOut</a>
         </li>
       </ul>
     }
   </nav>
 
-  <div class="container mx-auto p-4">
+  <div class="container mx-auto">
     <router-outlet></router-outlet>
   </div>
 </div>

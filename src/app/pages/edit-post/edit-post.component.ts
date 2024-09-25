@@ -45,7 +45,7 @@ export class EditPostComponent implements OnInit {
   ) {
     this.postForm = this.fb.group({
       name: [null, Validators.required],
-      content: [null, [Validators.required, Validators.maxLength(5000)]],
+      content: [null, [Validators.required, Validators.maxLength(150000)]],
       img: [null]
     });
     this.tagControl = new FormControl('');
