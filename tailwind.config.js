@@ -6,7 +6,11 @@ module.exports = {
     "./src/*.{html,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        inter: ['inter', 'serif'],
+      },
+    },
   },
   plugins: [
   ],

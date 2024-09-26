@@ -17,6 +17,7 @@ export class ViewPostComponent implements OnInit {
   isLoggedIn = false;
   message = "";
 
+
   getFirstParagraph(): string {
     const paragraph = this.post.content;
     const firstParagraph = paragraph.split('</p>')[0] + '</p>';

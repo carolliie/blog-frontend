@@ -21,6 +21,7 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
+              "src/assets",
               {
                 "glob": "**/*", "input": "node_modules/tinymce", "output": "/tinymce/"
               }
@@ -43,13 +44,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "1mb",
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
+                  "maximumWarning": "20kb",
+                  "maximumError": "30kb"
                 }
               ],
               "outputHashing": "all"
@@ -86,6 +87,7 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
+              "src/assets",
               {
                 "glob": "**/*",
                 "input": "public"
