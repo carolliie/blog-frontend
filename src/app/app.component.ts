@@ -21,6 +21,7 @@ export class AppComponent {
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;
+  menuVisible = false;
   username?: string;
 
   eventBusSub?: Subscription;
@@ -47,6 +48,10 @@ export class AppComponent {
     this.eventBusSub = this.eventBusService.on('logout', () => {
       this.logout();
     });
+  }
+
+  showMenu() {
+    this.menuVisible = !this.menuVisible;
   }
 
   logout(): void {

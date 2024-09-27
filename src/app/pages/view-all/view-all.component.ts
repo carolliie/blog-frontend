@@ -14,8 +14,7 @@ export class ViewAllComponent implements OnInit{
 
   allPosts: any;
   post: any;
-  images: { [key: string]: string } = {}; 
-
+  images: { [key: string]: string } = {};
   constructor(private postService: PostService){}
 
   ngOnInit() {

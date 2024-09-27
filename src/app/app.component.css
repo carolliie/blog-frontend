@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-20px);
+    }
+}
+
+.animate-slide-in {
+    animation: fade-in 0.5s ease-out forwards;
+}
+
+.animate-slide-out {
+    animation: fade-out 0.5s ease-out forwards;
+}
+
+.options {
+    font-family: 'Snell', serif;
+    font-size: 88px;
+}

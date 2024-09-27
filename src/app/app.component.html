@@ -1,37 +1,61 @@
-<div id="app">
-  <nav class="bg-gray-800 p-4">
-    <a href="#" class="text-white text-lg font-semibold">CarollieBlog</a>
-    <ul class="flex space-x-4 mt-2 text-white font-bold">
-      <li>
-        <a href="/view-all" class="hover:underline" routerLink="/view-all" routerLinkActive="/view-all">Home</a>
-      </li>
-
-      @if (isLoggedIn) {
-        <li>
-          <a href="/create-post" class="hover:underline" routerLink="/create-post" routerLinkActive="/create-post">Create Post</a>
-        </li>
-      }
-    </ul>
-
-    @if (!isLoggedIn) {
-      <ul class="flex space-x-4 mt-2 ml-auto text-white">
-        <li>
-          <a href="/register" class="hover:underline" routerLink="/register" routerLinkActive="/register">Sign Up</a>
-        </li>
-        <li>
-          <a href="/login" class="hover:underline" routerLink="/login" routerLinkActive="/login">Login</a>
-        </li>
-      </ul>
-    } @else {
-      <ul class="flex space-x-4 mt-2 ml-auto text-white">
-        <li>
-          <a href="/login" class="hover:underline" (click)="logout()">LogOut</a>
-        </li>
-      </ul>
-    }
+<div id="app" class="app">
+  <nav class="bg-[#F3EEE8] flex flex-row justify-between">
+    <a href="/view-all" class="logo">
+      <img src="assets/carollie.svg" alt="carollie logo" />
+    </a>
+    <img src="assets/menu.svg" class="w-10 h-10 m-12" alt="menu icon" [ngClass]="{'hidden': menuVisible}"
+      (click)="showMenu()"/>
   </nav>
 
-  <div class="mx-auto">
+  <div *ngIf="menuVisible" class="fixed inset-0 flex flex-col w-full h-full bg-[#F3EEE8] z-50 text-center animate-slide-in">
+    <a href="/view-all" class="logo">
+      <img src="assets/carollie.svg" alt="carollie logo" />
+    </a>
+    <div class="options mb-20">
+      <ul class="justify-center mt-2 text-black">
+        <li>
+          <a href="/view-all" class="" routerLink="/view-all" routerLinkActive="/view-all" (click)="showMenu()">Home</a>
+        </li>
+
+        @if (isLoggedIn) {
+        <li>
+          <a href="/create-post" class="" routerLink="/create-post"
+            routerLinkActive="/create-post" (click)="showMenu()">Create
+            Post</a>
+        </li>
+
+        <ul class="justify-center mt-2 ml-auto text-black">
+          <li>
+            <a href="/login" class="" (click)="logout()" (click)="showMenu()">LogOut</a>
+          </li>
+        </ul>
+        }
+      </ul>
+
+      @if (!isLoggedIn) {
+      <ul class="justify-center mt-2 ml-auto text-black">
+        <li>
+          <a href="/register" class="" routerLink="/register" routerLinkActive="/register" (click)="showMenu()">Sign Up</a>
+        </li>
+        <li>
+          <a href="/login" class="" routerLink="/login" routerLinkActive="/login" (click)="showMenu()">Login</a>
+        </li>
+      </ul>
+      }
+      <div class="flex flex-row justify-evenly font-inter text-4xl font-bold p-10">
+        <a href="https://www.linkedin.com/in/ana-caroline-vieira-526374274/">
+          <p>LINKEDIN</p>
+        </a>
+        <a href="https://github.com/carolliie">GITHUB</a>
+      </div>
+    </div>
+
+    <button (click)="showMenu()" class="absolute top-12 right-12 w-10 h-10">
+      <img src="assets/close.svg" alt="close menu icon" />
+    </button>
+  </div>
+
+  <div class="mx-auto bg-[#F3EEE8]">
     <router-outlet></router-outlet>
   </div>
 </div>
