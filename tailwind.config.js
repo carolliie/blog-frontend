@@ -9,6 +9,8 @@ module.exports = {
     extend: {
       fontFamily: {
         inter: ['inter', 'serif'],
+        viaoda: ['viaoda', 'serif'],
+        tiempos: ['tiempos', 'serif']
       },
     },
   },
