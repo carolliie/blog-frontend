@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -27,6 +27,20 @@ export class AppComponent {
 
   eventBusSub?: Subscription;
 
+  readonly TARGET_TEXT = "LINKEDIN";
+  readonly TARGET_TEXT2 = "GITHUB";
+  readonly CYCLES_PER_LETTER = 2;
+  readonly SHUFFLE_TIME = 100;
+  readonly CHARS = "!@#$%^&*():{};|,.<>/?";
+
+  text: string = this.TARGET_TEXT;
+  text2: string = this.TARGET_TEXT2;
+  intervalRefLinkedin: any = null;
+  intervalRefGithub: any = null;
+
+  @ViewChild('encryptButton') encryptButton!: ElementRef;
+  @ViewChild('encryptButton2') encryptButton2!: ElementRef;
+
   constructor(
     private storageService: StorageService,
     private authService: AuthService,
@@ -49,6 +63,84 @@ export class AppComponent {
     this.eventBusSub = this.eventBusService.on('logout', () => {
       this.logout();
     });
+  }
+
+  scrambleLinkedin() {
+    let pos = 0;
+    this.clearIntervalLinkedin(); 
+
+    this.intervalRefLinkedin = setInterval(() => {
+      const scrambled = this.TARGET_TEXT.split("")
+        .map((char, index) => {
+          if (pos / this.CYCLES_PER_LETTER > index) {
+            return char;
+          }
+
+          const randomCharIndex = Math.floor(Math.random() * this.CHARS.length);
+          const randomChar = this.CHARS[randomCharIndex];
+
+          return randomChar;
+        })
+        .join("");
+
+      this.text = scrambled;
+      pos++;
+
+      if (pos >= this.TARGET_TEXT.length * this.CYCLES_PER_LETTER) {
+        this.stopScrambleLinkedin();
+      }
+    }, this.SHUFFLE_TIME);
+  }
+
+  scrambleGithub() {
+    let pos = 0;
+    this.clearIntervalGithub();
+
+    this.intervalRefGithub = setInterval(() => {
+      const scrambled = this.TARGET_TEXT2.split("")
+        .map((char, index) => {
+          if (pos / this.CYCLES_PER_LETTER > index) {
+            return char;
+          }
+
+          const randomCharIndex = Math.floor(Math.random() * this.CHARS.length);
+          const randomChar = this.CHARS[randomCharIndex];
+
+          return randomChar;
+        })
+        .join("");
+
+      this.text2 = scrambled;
+      pos++;
+
+      if (pos >= this.TARGET_TEXT2.length * this.CYCLES_PER_LETTER) {
+        this.stopScrambleGithub();
+      }
+    }, this.SHUFFLE_TIME);
+  }
+
+  stopScrambleLinkedin() {
+    this.clearIntervalLinkedin();
+    this.text = this.TARGET_TEXT;
+  }
+
+  stopScrambleGithub() {
+    this.clearIntervalGithub();
+    this.text2 = this.TARGET_TEXT2;
+  }
+
+  clearIntervalLinkedin() {
+    if (this.intervalRefLinkedin) {
+      clearInterval(this.intervalRefLinkedin);
+      this.intervalRefLinkedin = null;
+    }
+  }
+
+  clearIntervalGithub() {
+    if (this.intervalRefGithub) {
+      clearInterval(this.intervalRefGithub);
+      this.intervalRefGithub = null;
+    }
   }
 
   showMenu() {

@@ -14,36 +14,73 @@
 
 <div class="recent bg-[#DCD1C2]">
   <h3 class="text-center justify-center">Recent posts</h3>
+  <div class="title flex flex-row justify-start items-center px-56 gap-6 pt-20">
+    <img src="assets/line2.svg" alt="line">
+    <h1>new insights - most viewed</h1>
+  </div>
   <div
-  class="posts grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 justify-center p-40 sm:mt-16 sm:pt-16 animate-fade-in">
-  <div *ngFor="let item of allPosts, let i = index" class="max-w-xl flex flex-col items-center justify-between">
-    <article [ngStyle]="{
+    class="posts grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 justify-center px-40 py-36 sm:mt-16 sm:pt-16 animate-fade-in">
+    <div *ngFor="let item of allPosts, let i = index" class="max-w-xl flex flex-col items-center justify-between">
+      <article [ngStyle]="{
+        'background-image': 'url(' + item.img + ')',
+        'background-size': 'cover',
+        'background-position': 'center',
+        'background-repeat': 'no-repeat'
+      }" *ngIf="i < 3"
+        class="post relative post-card py-7 px-3 h-96 w-96 flex flex-col justify-end rounded-2xl overflow-hidden shadow-lg font-inter">
+
+        <div class="above absolute inset-0 bg-black opacity-50 z-10"></div>
+
+        <div class="relative z-20 flex flex-col items-start gap-2 p-4 text-white">
+          <a [routerLink]="['/view-post', item.slug]">
+            <span *ngIf="item.tags?.length > 0"
+              class="tag relative z-50 text-xs rounded-full bg-white px-3 py-1.5 font-medium text-black">
+              {{ item.tags.join(', ') }}
+            </span>
+
+            <h6 class="mt-3 text-lg font-semibold">
+              {{ item.name }}
+            </h6>
+          </a>
+          <div class="excerpt mt-5 line-clamp-3 text-sm"
+            [innerHTML]="item.content ? (item.content.length > 600 ? item.content.substr(0, 600) + '...' : item.content) : ''">
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="all bg-[#F6F6F6]">
+    <h3 class="text-center justify-center">All posts</h3>
+    <div
+      class="posts grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 justify-center p-40 sm:mt-16 sm:pt-16 animate-fade-in">
+      <div *ngFor="let item of allPosts" class="max-w-xl flex flex-col items-center justify-between">
+        <article [ngStyle]="{
         'background-image': 'url(' + item.img + ')',
         'background-size': 'cover',
         'background-position': 'center',
         'background-repeat': 'no-repeat'
       }"
-       *ngIf="i < 3"
-      class="post relative post-card py-7 px-3 h-96 w-96 flex flex-col justify-end rounded-2xl overflow-hidden shadow-lg font-inter">
+          class="post relative post-card py-7 px-3 h-96 w-96 flex flex-col justify-end rounded-2xl overflow-hidden shadow-lg font-inter">
 
-      <div class="above absolute inset-0 bg-black opacity-50 z-10"></div>
+          <div class="above absolute inset-0 bg-black opacity-50 z-10"></div>
 
-      <div class="relative z-20 flex flex-col items-start gap-2 p-4 text-white">
-        <a [routerLink]="['/view-post', item.slug]">
-          <span *ngIf="item.tags?.length > 0"
-            class="tag relative z-50 text-xs rounded-full bg-white px-3 py-1.5 font-medium text-black">
-            {{ item.tags.join(', ') }}
-          </span>
+          <div class="relative z-20 flex flex-col items-start gap-2 p-4 text-white">
+            <a [routerLink]="['/view-post', item.slug]">
+              <span *ngIf="item.tags?.length > 0"
+                class="tag relative z-50 text-xs rounded-full bg-white px-3 py-1.5 font-medium text-black">
+                {{ item.tags.join(', ') }}
+              </span>
 
-          <h6 class="mt-3 text-lg font-semibold">
-            {{ item.name }}
-          </h6>
-        </a>
-        <div class="excerpt mt-5 line-clamp-3 text-sm"
-          [innerHTML]="item.content ? (item.content.length > 600 ? item.content.substr(0, 600) + '...' : item.content) : ''">
-        </div>
+              <h6 class="mt-3 text-lg font-semibold">
+                {{ item.name }}
+              </h6>
+            </a>
+            <div class="excerpt mt-5 line-clamp-3 text-sm"
+              [innerHTML]="item.content ? (item.content.length > 600 ? item.content.substr(0, 600) + '...' : item.content) : ''">
+            </div>
+          </div>
+        </article>
       </div>
-    </article>
+    </div>
   </div>
-</div>
-</div>

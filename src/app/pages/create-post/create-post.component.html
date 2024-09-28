@@ -1,5 +1,5 @@
 <form [formGroup]="postForm" (ngSubmit)="onSubmit()"
-  class="container w-1/2 align-center justify-center mx-auto border-gray-900/10 p-6">
+  class="container w-1/2 align-center justify-center mx-auto border-gray-900/10 p-6 font-inter">
   <div class="space-y-12" appearance="fill">
     <div class="border-b border-gray-900/10 pb-12">
       <h2 class="text-base font-semibold leading-7 text-gray-900">New Post</h2>
@@ -10,7 +10,8 @@
           <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Name</label>
           <div class="mt-2">
             <input type="text" name="name" id="name" formControlName="name"
-              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              class="block w-full rounded-md border-0 p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              placeholder="Post name">
           </div>
         </div>
 
@@ -18,7 +19,7 @@
           <label for="img" class="block text-sm font-medium leading-6 text-gray-900">Image</label>
           <div class="mt-2">
             <input type="text" name="img" id="img" formControlName="img"
-              class="blockborder-0 py-1.5 text-gray-900 shadow-sm ring-1 w-full rounded-md ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+              class="blockborder-0 p-3 text-gray-900 shadow-sm ring-1 w-full rounded-md ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
               placeholder="Post thumbnail">
           </div>
         </div>
@@ -27,7 +28,7 @@
           <label for="content" class="block text-sm font-medium leading-6 text-gray-900">Content</label>
           <div class="mt-2">
             <editor [init]="init" id="content" name="content" rows="5" formControlName="content"
-              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              class="block w-full rounded-lg border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
             </editor>
           </div>
         </div>
@@ -43,7 +44,7 @@
                 class="text-sm font-semibold leading-6 text-gray-900">Remove</button>
             </div>
             <input type="text" id="tag" [formControl]="tagControl" (keyup.enter)="addTag()" placeholder="New Tag..."
-              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              class="block w-full rounded-md border-0 p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
           </div>
         </div>
 
@@ -59,9 +60,9 @@
   </div>
 
   <div class="mt-6 flex items-center justify-end gap-x-6">
-    <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
+    <a href="/view-all" type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</a>
     <button type="submit"
-      class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+      class="rounded-md bg-rose-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-rose-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
       [disabled]="!postForm.valid">Create New Post</button>
   </div>
 </form>

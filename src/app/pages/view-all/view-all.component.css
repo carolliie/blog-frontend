@@ -42,15 +42,32 @@
     font-weight: 600;
     font-size: 20px;
     color: white;
-    padding: 10px;
+    padding: 15px 20px 0px 20px;
     transform: translateY(-30px);
-    width: 10%;
+    width: 15%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     margin: auto;
     background-color: #DCD1C2;
+    border-radius: 12px;
+}
+
+.all h3 {
+    font-family: "Josefin slab", serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: black;
+    padding: 15px 20px 0px 20px;
+    transform: translateY(-30px);
+    width: 15%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    background-color: #F6F6F6;
     border-radius: 12px;
 }
 
@@ -95,6 +112,14 @@
 
 .above {
     transition: background-color 0.3s ease-in-out;
+}
+
+.title h1 {
+    font-family: "Test Tiempos Text", serif;
+    font-size: 62px;
+    font-weight: 300;
+    color: white;
+    width: 35%;
 }
 
 @keyframes fade-in {

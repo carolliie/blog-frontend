@@ -46,9 +46,10 @@
       </ul>
       }
       <div class="flex flex-row justify-evenly font-inter text-4xl font-bold p-10">
-        <a class="descramble-hover" href="https://www.linkedin.com/in/ana-caroline-vieira-526374274/"
-          id="linkedin">LINKEDIN</a>
-        <a class="descramble-hover" href="https://github.com/carolliie" id="github">GITHUB</a>
+        <a href="https://www.linkedin.com/in/ana-caroline-vieira-526374274/" class="w-48" id="linkedin"
+          #encryptButton (mouseenter)="scrambleLinkedin()" (mouseleave)="stopScrambleLinkedin()">{{ text }}</a>
+        <a #encryptButton2 (mouseenter)="scrambleGithub()" (mouseleave)="stopScrambleGithub()"
+          href="https://github.com/carolliie" class="w-48" id="github">{{ text2 }}</a>
       </div>
     </div>
 
