@@ -21,6 +21,7 @@ export class AppComponent {
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;
+  isAnimating = false;
   menuVisible = false;
   username?: string;
 
@@ -51,7 +52,27 @@ export class AppComponent {
   }
 
   showMenu() {
-    this.menuVisible = !this.menuVisible;
+    if (this.menuVisible = !this.menuVisible) {
+      this.isAnimating = false;
+      this.menuVisible = true;
+    } else {
+      this.isAnimating = true;
+
+      setTimeout(() => {
+        this.menuVisible = false;
+        this.isAnimating = false;
+      }, 500);
+    }
+
+  }
+
+  hideMenu() {
+    this.isAnimating = true;
+
+    setTimeout(() => {
+      this.menuVisible = false;
+      this.isAnimating = false;
+    }, 500)
   }
 
   logout(): void {

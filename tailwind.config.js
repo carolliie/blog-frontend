@@ -10,7 +10,6 @@ module.exports = {
       fontFamily: {
         inter: ['inter', 'serif'],
         viaoda: ['viaoda', 'serif'],
-        tiempos: ['tiempos', 'serif']
       },
     },
   },

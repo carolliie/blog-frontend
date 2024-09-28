@@ -1,13 +1,29 @@
-<div
-  class="posts grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 mx-auto mt-10 max-w-7xl pt-10 sm:mt-16 sm:pt-16">
-  <div *ngFor="let item of allPosts" class="max-w-xl flex flex-col items-start justify-between">
+<div class="welcome flex flex-col justify-center text-center items-center animate-fade-in py-40 mb-40">
+  <h2>welcome to my</h2>
+  <span>2024</span>
+  <h1>blog</h1>
+  <div class="flex flex-row justify-between items-center w-1/2">
+    <h3 class="mx-40 -my-10">of daily insights</h3>
+    <div class="read flex flex-row gap-3 w-64">
+      <img class="h-24 w-3" src="assets/line.svg" alt="line">
+      <p>read articles, news and tips about technology such as software development and design.</p>
+    </div>
 
+  </div>
+</div>
+
+<div class="recent bg-[#DCD1C2]">
+  <h3 class="text-center justify-center">Recent posts</h3>
+  <div
+  class="posts grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 justify-center p-40 sm:mt-16 sm:pt-16 animate-fade-in">
+  <div *ngFor="let item of allPosts, let i = index" class="max-w-xl flex flex-col items-center justify-between">
     <article [ngStyle]="{
         'background-image': 'url(' + item.img + ')',
         'background-size': 'cover',
         'background-position': 'center',
         'background-repeat': 'no-repeat'
       }"
+       *ngIf="i < 3"
       class="post relative post-card py-7 px-3 h-96 w-96 flex flex-col justify-end rounded-2xl overflow-hidden shadow-lg font-inter">
 
       <div class="above absolute inset-0 bg-black opacity-50 z-10"></div>
@@ -20,7 +36,7 @@
           </span>
 
           <h6 class="mt-3 text-lg font-semibold">
-              {{ item.name }}
+            {{ item.name }}
           </h6>
         </a>
         <div class="excerpt mt-5 line-clamp-3 text-sm"
@@ -29,4 +45,5 @@
       </div>
     </article>
   </div>
+</div>
 </div>

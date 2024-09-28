@@ -4,10 +4,12 @@
       <img src="assets/carollie.svg" alt="carollie logo" />
     </a>
     <img src="assets/menu.svg" class="w-10 h-10 m-12" alt="menu icon" [ngClass]="{'hidden': menuVisible}"
-      (click)="showMenu()"/>
+      (click)="showMenu()" />
   </nav>
 
-  <div *ngIf="menuVisible" class="fixed inset-0 flex flex-col w-full h-full bg-[#F3EEE8] z-50 text-center animate-slide-in">
+  <div *ngIf="menuVisible || isAnimating"
+    class="fixed inset-0 flex flex-col w-full h-full bg-[#F3EEE8] z-50 text-center"
+    [ngClass]="{'animate-slide-in': menuVisible && !isAnimating, 'animate-slide-out': !menuVisible && isAnimating}">
     <a href="/view-all" class="logo">
       <img src="assets/carollie.svg" alt="carollie logo" />
     </a>
@@ -19,8 +21,8 @@
 
         @if (isLoggedIn) {
         <li>
-          <a href="/create-post" class="" routerLink="/create-post"
-            routerLinkActive="/create-post" (click)="showMenu()">Create
+          <a href="/create-post" class="" routerLink="/create-post" routerLinkActive="/create-post"
+            (click)="showMenu()">Create
             Post</a>
         </li>
 
@@ -35,7 +37,8 @@
       @if (!isLoggedIn) {
       <ul class="justify-center mt-2 ml-auto text-black">
         <li>
-          <a href="/register" class="" routerLink="/register" routerLinkActive="/register" (click)="showMenu()">Sign Up</a>
+          <a href="/register" class="" routerLink="/register" routerLinkActive="/register" (click)="showMenu()">Sign
+            Up</a>
         </li>
         <li>
           <a href="/login" class="" routerLink="/login" routerLinkActive="/login" (click)="showMenu()">Login</a>
@@ -43,10 +46,9 @@
       </ul>
       }
       <div class="flex flex-row justify-evenly font-inter text-4xl font-bold p-10">
-        <a href="https://www.linkedin.com/in/ana-caroline-vieira-526374274/">
-          <p>LINKEDIN</p>
-        </a>
-        <a href="https://github.com/carolliie">GITHUB</a>
+        <a class="descramble-hover" href="https://www.linkedin.com/in/ana-caroline-vieira-526374274/"
+          id="linkedin">LINKEDIN</a>
+        <a class="descramble-hover" href="https://github.com/carolliie" id="github">GITHUB</a>
       </div>
     </div>
 
@@ -55,7 +57,7 @@
     </button>
   </div>
 
-  <div class="mx-auto bg-[#F3EEE8]">
+  <div class="mx-auto">
     <router-outlet></router-outlet>
   </div>
 </div>

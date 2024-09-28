@@ -19,7 +19,6 @@ export class ViewAllComponent implements OnInit{
 
   ngOnInit() {
     this.getAllPosts();
-    console.log('All posts:', this.getAllPosts());
   }
 
   getAllPosts() {
