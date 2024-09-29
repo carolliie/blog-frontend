@@ -1,4 +1,4 @@
-<div class="max-w-md mx-auto">
+<div class="max-w-md mx-auto font-inter">
   <div class="bg-white p-6 rounded-lg shadow-md">
     <img
       id="profile-img"
@@ -13,31 +13,33 @@
       novalidate
     >
       <div class="mb-4">
-        <label for="email" class="block text-gray-700">Email</label>
+        <label for="email" class="block text-black font-medium">Email</label>
         <input
           type="text"
-          class="form-input mt-1 block w-full"
+          class="form-input mt-1 block w-full border rounded p-3"
           name="email"
           [(ngModel)]="form.email"
           required
           #email="ngModel"
           [ngClass]="{ 'border-red-500': f.submitted && email.errors }"
+          placeholder="Your email"
         />
         @if (email.errors && f.submitted) {
         <div class="text-red-500 text-sm mt-1">Email is required!</div>
         }
       </div>
       <div class="mb-4">
-        <label for="password" class="block text-gray-700">Password</label>
+        <label for="password" class="block text-black font-medium">Password</label>
         <input
           type="password"
-          class="form-input mt-1 block w-full"
+          class="form-input mt-1 block w-full border rounded p-3"
           name="password"
           [(ngModel)]="form.password"
           required
           minlength="4"
           #password="ngModel"
           [ngClass]="{ 'border-red-500': f.submitted && password.errors }"
+          placeholder="Your password"
         />
         @if (password.errors && f.submitted) {
         <div class="text-red-500 text-sm mt-1">
@@ -51,7 +53,7 @@
         }
       </div>
       <div class="mb-4">
-        <button class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Login</button>
+        <button class="w-full bg-rose-300 text-white py-2 px-4 rounded hover:bg-rose-400">Login</button>
       </div>
       <div class="mb-4">
         @if (f.submitted && isLoginFailed) {

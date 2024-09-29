@@ -53,7 +53,7 @@
   <div class="all bg-[#F6F6F6]">
     <h3 class="text-center justify-center">All posts</h3>
     <div
-      class="posts grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 justify-center p-40 sm:mt-16 sm:pt-16 animate-fade-in">
+      class="posts grid grid-cols-1 gap-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 justify-center p-40 sm:mt-16 sm:pt-16 animate-fade-in">
       <div *ngFor="let item of allPosts" class="max-w-xl flex flex-col items-center justify-between">
         <article [ngStyle]="{
         'background-image': 'url(' + item.img + ')',

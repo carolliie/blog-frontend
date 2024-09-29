@@ -1,0 +1,24 @@
+<div #footer class="footer flex flex-col justify-between bg-[#F6BAC6] text-[#D73234]">
+    <div class="flex flex-col justify-center items-center text-center p-72">
+        <h1 class="text-9xl font-bold">carollie</h1>
+        <p class="text-5xl font-semibold">{{ textDev }}</p>
+        <div class="flex flex-row justify-evenly font-inter text-4xl font-bold p-14 gap-x-28">
+            <a href="https://www.linkedin.com/in/ana-caroline-vieira-526374274/" class="w-48" id="linkedin"
+                #encryptButton (mouseenter)="scrambleLinkedin()" (mouseleave)="stopScrambleLinkedin()">{{ text }}</a>
+            <a #encryptButton2 (mouseenter)="scrambleGithub()" (mouseleave)="stopScrambleGithub()"
+                href="https://github.com/carolliie" class="w-48" id="github">{{ text2 }}</a>
+        </div>
+    </div>
+    <div class="bar flex flex-row justify-between gap-20 font-inter font-medium px-20 py-10">
+        <ul class="flex flex-row justify-between gap-20">
+            <li>START</li>
+            <li>STACKS</li>
+            <li>ABOUT</li>
+            <li>PROJECTS</li>
+            <li>CONTACT</li>
+        </ul>
+        <ul>
+            <li>©COPYRIGHT 2024 - carollie</li>
+        </ul>
+    </div>
+</div>

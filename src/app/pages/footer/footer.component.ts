@@ -1,31 +1,14 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { AuthService } from './pages/_services/auth.service';
-import { StorageService } from './pages/_services/storage.service';
-import { EventBusService } from './pages/_shared/event-bus.service';
-import { EditorModule } from '@tinymce/tinymce-angular';
-import { FooterComponent } from "./pages/footer/footer.component";
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-footer',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, ReactiveFormsModule, CommonModule, FormsModule, EditorModule, FooterComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [],
+  templateUrl: './footer.component.html',
+  styleUrl: './footer.component.css'
 })
-export class AppComponent {
-  title = 'blogWeb'; private role: any;
-  isLoggedIn = false;
-  showAdminBoard = false;
-  showModeratorBoard = false;
-  isAnimating = false;
-  menuVisible = false;
-  username?: string;
-
-  eventBusSub?: Subscription;
+export class FooterComponent implements AfterViewInit {
+  readonly TEXT_DEV = ".dev";
 
   readonly TARGET_TEXT = "LINKEDIN";
   readonly TARGET_TEXT2 = "GITHUB";
@@ -35,34 +18,33 @@ export class AppComponent {
 
   text: string = this.TARGET_TEXT;
   text2: string = this.TARGET_TEXT2;
+  textDev: string = "";
   intervalRefLinkedin: any = null;
   intervalRefGithub: any = null;
 
   @ViewChild('encryptButton') encryptButton!: ElementRef;
   @ViewChild('encryptButton2') encryptButton2!: ElementRef;
+  @ViewChild('footer') footer!: ElementRef;
 
-  constructor(
-    private storageService: StorageService,
-    private authService: AuthService,
-    private eventBusService: EventBusService
-  ) { }
+  index: number = 0;
+  typingSpeed: number = 300;
 
-  ngOnInit(): void {
-    this.isLoggedIn = this.storageService.isLoggedIn();
-
-    if (this.isLoggedIn) {
-      const user = this.storageService.getUser();
-      this.role = user.role;
-
-      this.showAdminBoard = this.role.includes('admin');
-      this.showModeratorBoard = this.role.includes('user');
-
-      this.username = user.username;
+  ngAfterViewInit() {
+    if (this.footer) {
+      this.typingText();
     }
+  }
+  
+  typingText() {
+    if (this.index < this.TEXT_DEV.length) {
+      this.textDev += this.TEXT_DEV[this.index];
 
-    this.eventBusSub = this.eventBusService.on('logout', () => {
-      this.logout();
-    });
+      this.index++;
+
+      setTimeout(() => {
+        this.typingText();
+      }, this.typingSpeed);
+    }
   }
 
   scrambleLinkedin() {
@@ -141,43 +123,5 @@ export class AppComponent {
       clearInterval(this.intervalRefGithub);
       this.intervalRefGithub = null;
     }
-  }
-
-  showMenu() {
-    if (this.menuVisible = !this.menuVisible) {
-      this.isAnimating = false;
-      this.menuVisible = true;
-    } else {
-      this.isAnimating = true;
-
-      setTimeout(() => {
-        this.menuVisible = false;
-        this.isAnimating = false;
-      }, 500);
-    }
-
-  }
-
-  hideMenu() {
-    this.isAnimating = true;
-
-    setTimeout(() => {
-      this.menuVisible = false;
-      this.isAnimating = false;
-    }, 500)
-  }
-
-  logout(): void {
-    this.authService.logout().subscribe({
-      next: res => {
-        console.log(res);
-        this.storageService.clean();
-
-        window.location.reload();
-      },
-      error: (err: any) => {
-        console.log(err);
-      }
-    });
   }
 }
