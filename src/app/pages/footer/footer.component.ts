@@ -24,14 +24,27 @@ export class FooterComponent implements AfterViewInit {
 
   @ViewChild('encryptButton') encryptButton!: ElementRef;
   @ViewChild('encryptButton2') encryptButton2!: ElementRef;
-  @ViewChild('footer') footer!: ElementRef;
+  @ViewChild('footer', { static: false }) footer!: ElementRef;
 
   index: number = 0;
   typingSpeed: number = 300;
 
   ngAfterViewInit() {
     if (this.footer) {
-      this.typingText();
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            this.typingText();
+            observer.unobserve(this.footer.nativeElement); // Parar de observar após a animação
+          }
+        },
+        {
+          root: null, // A página inteira será o root
+          threshold: 0.5 // 50% do elemento deve estar visível para ativar a animação
+        }
+      );
+
+      observer.observe(this.footer.nativeElement);
     }
   }
   

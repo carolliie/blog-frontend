@@ -104,6 +104,16 @@
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
+.post:hover {
+    .post h6 {
+        color: black;
+    }
+
+    .above {
+        background-color: white;
+    }
+}
+
 .above:hover {
     background-color: white;
     opacity: 0.5;
