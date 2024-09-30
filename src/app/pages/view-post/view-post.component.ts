@@ -47,7 +47,6 @@ export class ViewPostComponent implements OnInit {
   
   getPostBySlug(slug: string) {
     this.postService.getPostBySlug(slug).subscribe(res => {
-      console.log(res);
       this.post = res;
     }, error => {
       console.error('Erro ao obter post:', error); 
@@ -57,7 +56,6 @@ export class ViewPostComponent implements OnInit {
 
   /*getPostById(id: number) {
     this.postService.getPostById(id).subscribe(res => {
-      console.log(res);
       this.post = res;
     }, error => {
       console.error('Method not implemented.');
@@ -66,7 +64,6 @@ export class ViewPostComponent implements OnInit {
 
   editPostBySlug(slug: string, data: any) {
     this.postService.editPostBySlug(slug, data).subscribe(res => {
-      console.log(res);
       this.post = res;
     }, error => {
       console.error('Method not implemented.');

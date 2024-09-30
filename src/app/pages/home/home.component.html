@@ -1,6 +1,29 @@
-<div class="container mx-auto p-4">
-    <header class="bg-gray-200 p-6 rounded-lg shadow-md">
-      <p class="text-gray-700"></p>
-    </header>
+<div class="welcome flex flex-col justify-center text-center items-center animate-fade-in py-40 mb-40">
+  <h2>welcome to my</h2>
+  <span>2024</span>
+  <h1>portfolio</h1>
+  <div class="flex flex-row justify-center items-center">
+    <h3 class="">& Blog</h3>
+    <div class="read flex flex-row gap-3">
+      <img class="h-24 w-3" src="assets/line.svg" alt="line">
+      <p>Hi! I am Caroline, FullStack Developer and Web Designer from Brazil. But you can call me Carole.</p>
+    </div>
   </div>
-  
+</div>
+
+<div class="recent bg-[#DCD1C2]">
+  <h3 class="flex justify-center gap-10">Some of my Stacks</h3>
+  <div class="title flex flex-row justify-center items-center p-40 gap-16">
+    <img (mouseenter)="show('java')" (mouseleave)="hide()" src="assets/Java.svg" alt="java" class="w-20 h-20">
+    <img (mouseenter)="show('postgres')" (mouseleave)="hide()" src="assets/postgres.svg" alt="postgres"
+      class="w-20 h-20">
+    <img (mouseenter)="show('angular')" (mouseleave)="hide()" src="assets/Angular.svg" alt="angular" class="w-20 h-20">
+    <img (mouseenter)="show('spring')" (mouseleave)="hide()" src="assets/spring.svg" alt="spring" class="w-20 h-20">
+    <img (mouseenter)="show('typescript')" (mouseleave)="hide()" src="assets/ts.svg" alt="typescript" class="w-20 h-20">
+    <img (mouseenter)="show('git')" (mouseleave)="hide()" src="assets/git.svg" alt="git" class="w-20 h-20">
+  </div>
+  <div [ngClass]="{'block': isVisible, 'hidden': !isVisible}" class="stack bg-white text-[#8E816E] w-56 h-32 rounded shadow font-inter p-3 absolute" [style.left.px]="position.x" [style.top.px]="position.y">
+    <h4>{{ currentStack.title }}</h4>
+    <p>{{ currentStack.description }}</p>
+  </div>
+</div>

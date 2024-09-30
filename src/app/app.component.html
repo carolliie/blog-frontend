@@ -16,7 +16,11 @@
     <div class="options mb-20">
       <ul class="justify-center mt-2 text-black">
         <li>
-          <a href="/view-all" class="" routerLink="/view-all" routerLinkActive="/view-all" (click)="showMenu()">Home</a>
+          <a href="/home" class="" routerLink="/home" routerLinkActive="/home" (click)="showMenu()">Home</a>
+        </li>
+
+        <li>
+          <a href="/view-all" class="" routerLink="/view-all" routerLinkActive="/view-all" (click)="showMenu()">Blog</a>
         </li>
 
         @if (isLoggedIn) {

@@ -48,7 +48,7 @@
           </div>
         </div>
 
-        <div class="mb-4 w-full">
+        <div class="mb-4 w-96">
           @if (message) {
           <div class="bg-green-100 text-green-700 p-3 rounded" role="alert">
             Log: {{ message }}
@@ -62,7 +62,7 @@
   <div class="mt-6 flex items-center justify-end gap-x-6">
     <a href="/view-all" type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</a>
     <button type="submit"
-      class="rounded-md bg-rose-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-rose-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+      class="rounded-md bg-rose-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-rose-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
       [disabled]="!postForm.valid">Create New Post</button>
   </div>
 </form>

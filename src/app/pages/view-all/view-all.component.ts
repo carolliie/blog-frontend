@@ -27,16 +27,18 @@ export class ViewAllComponent implements OnInit  {
 
   getAllPosts() {
     this.postService.getAllPosts().subscribe(res => {
-      console.log(res);
       this.allPosts = res;
     }, error => {
       console.error('Method not implemented.');
     })
   }
 
+  get reversedPosts() {
+    return [...this.allPosts].reverse();
+  }
+
   /*getPostById(id:number) {
     this.postService.getPostById(id).subscribe(res => {
-      console.log(res);
       this.post = res;
     }, error => {
       console.error('Method not implemented.');
@@ -45,7 +47,6 @@ export class ViewAllComponent implements OnInit  {
 
   getPostBySlug(slug: string) {
     this.postService.getPostBySlug(slug).subscribe(res => {
-      console.log(res);
       this.post = res;
     }, error => {
       console.error('Method not implemented.');
