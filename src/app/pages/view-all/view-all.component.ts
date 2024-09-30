@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../service/post.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './view-all.component.html',
   styleUrl: './view-all.component.css'
 })
-export class ViewAllComponent implements OnInit, AfterViewInit  {
+export class ViewAllComponent implements OnInit  {
 
   allPosts: any;
   post: any;
@@ -23,27 +23,6 @@ export class ViewAllComponent implements OnInit, AfterViewInit  {
   ngOnInit() {
     this.getAllPosts();
     this.filterPosts();
-  }
-
-  ngAfterViewInit() {
-    // Seleciona o elemento h6 e .above com tipagem apropriada
-    const postTitle = document.querySelector('.post h6') as HTMLElement | null;
-    const aboveElement = document.querySelector('.above') as HTMLElement | null;
-
-    // Verifica se os elementos foram encontrados antes de adicionar os eventos
-    if (postTitle && aboveElement) {
-      // Adiciona evento de mouseover para mudar o background
-      postTitle.addEventListener('mouseover', () => {
-        aboveElement.style.backgroundColor = 'white';
-        aboveElement.style.opacity = '0.5';
-      });
-
-      // Adiciona evento de mouseout para reverter o background
-      postTitle.addEventListener('mouseout', () => {
-        aboveElement.style.backgroundColor = 'black';
-        aboveElement.style.opacity = '0.5';
-      });
-    }
   }
 
   getAllPosts() {
