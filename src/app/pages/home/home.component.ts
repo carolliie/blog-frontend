@@ -1,19 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  standalone: true,
+  imports: [NgClass]
 })
 
 export class HomeComponent implements OnInit {
   isVisible = false;
-  position = { x:0, y:0 };
-  currentStack = { title: '', description: '' }
+  isAnimating = false;
+  position = { x: 0, y: 0 };
+  currentStack = { title: '', description: '' };
+
+  // Definindo um tipo que corresponde às chaves de 'stacks'
+  stackKeys: keyof typeof this.stacks = "java";
 
   stacks = {
-    java: { title: 'JAVA', description: 'Most used back-end language' },
+    java: { title: 'Java', description: 'Most used back-end language' },
     postgres: { title: 'PostgreSQL', description: 'Open-source relational database' },
     angular: { title: 'Angular', description: 'Framework for building web applications' },
     spring: { title: 'Spring', description: 'Popular Java application framework' },
@@ -21,26 +28,31 @@ export class HomeComponent implements OnInit {
     git: { title: 'Git', description: 'Version control system' }
   };
 
-  show(stack: string, event: MouseEvent) {
+  show(stack: keyof typeof this.stacks, event: MouseEvent) {
     this.currentStack = this.stacks[stack];
     this.isVisible = true;
+    this.isAnimating = false;
     this.updatePosition(event);
   }
 
   hide() {
-    this.isVisible = false;
+    this.isAnimating = true;
+    setTimeout(() => {
+      this.isVisible = false;
+      this.isAnimating = false;
+    }, 400);
   }
 
   updatePosition(event: MouseEvent) {
     this.position = {
-      x: event.clientX + 10,
-      y: event.clientY + 10
+      x: event.clientX + 20,
+      y: event.clientY + 20
     };
   }
 
   content?: string;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.userService.getPublicContent().subscribe({

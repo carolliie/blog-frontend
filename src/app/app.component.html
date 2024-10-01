@@ -1,6 +1,6 @@
 <div id="app" class="app">
   <nav class="bg-[#F3EEE8] flex flex-row justify-between">
-    <a href="/view-all" class="logo">
+    <a href="/home" class="logo">
       <img src="assets/carollie.svg" alt="carollie logo" />
     </a>
     <img src="assets/menu.svg" class="w-10 h-10 m-12" alt="menu icon" [ngClass]="{'hidden': menuVisible}"
@@ -21,6 +21,10 @@
 
         <li>
           <a href="/view-all" class="" routerLink="/view-all" routerLinkActive="/view-all" (click)="showMenu()">Blog</a>
+        </li>
+
+        <li>
+          <a href="/home/#stacks" (click)="showMenu()">Stacks</a>
         </li>
 
         @if (isLoggedIn) {

@@ -11,19 +11,24 @@
   </div>
 </div>
 
-<div class="recent bg-[#DCD1C2]">
-  <h3 class="flex justify-center gap-10">Some of my Stacks</h3>
-  <div class="title flex flex-row justify-center items-center p-40 gap-16">
-    <img (mouseenter)="show('java')" (mouseleave)="hide()" src="assets/Java.svg" alt="java" class="w-20 h-20">
-    <img (mouseenter)="show('postgres')" (mouseleave)="hide()" src="assets/postgres.svg" alt="postgres"
+<div class="stacks bg-[#DCD1C2]" id="stacks">
+  <h3 class="flex justify-center font-semibold">Some of my Stacks</h3>
+  <div class="title flex flex-row justify-center items-center p-96 gap-16">
+    <img (mouseenter)="show('java', $event)" (mouseleave)="hide()" src="assets/Java.svg" alt="java" class="w-20 h-20">
+    <img (mouseenter)="show('postgres', $event)" (mouseleave)="hide()" src="assets/postgres.svg" alt="postgres"
       class="w-20 h-20">
-    <img (mouseenter)="show('angular')" (mouseleave)="hide()" src="assets/Angular.svg" alt="angular" class="w-20 h-20">
-    <img (mouseenter)="show('spring')" (mouseleave)="hide()" src="assets/spring.svg" alt="spring" class="w-20 h-20">
-    <img (mouseenter)="show('typescript')" (mouseleave)="hide()" src="assets/ts.svg" alt="typescript" class="w-20 h-20">
-    <img (mouseenter)="show('git')" (mouseleave)="hide()" src="assets/git.svg" alt="git" class="w-20 h-20">
+    <img (mouseenter)="show('angular', $event)" (mouseleave)="hide()" src="assets/Angular.svg" alt="angular"
+      class="w-20 h-20">
+    <img (mouseenter)="show('spring', $event)" (mouseleave)="hide()" src="assets/spring.svg" alt="spring"
+      class="w-20 h-20">
+    <img (mouseenter)="show('typescript', $event)" (mouseleave)="hide()" src="assets/ts.svg" alt="typescript"
+      class="w-20 h-20">
+    <img (mouseenter)="show('git', $event)" (mouseleave)="hide()" src="assets/git.svg" alt="git" class="w-20 h-20">
   </div>
-  <div [ngClass]="{'block': isVisible, 'hidden': !isVisible}" class="stack bg-white text-[#8E816E] w-56 h-32 rounded shadow font-inter p-3 absolute" [style.left.px]="position.x" [style.top.px]="position.y">
-    <h4>{{ currentStack.title }}</h4>
+  <div [ngClass]="{'block': isVisible, 'hidden': !isVisible, 'stack-fade-in': isVisible && !isAnimating, 'stack-fade-out': isAnimating}"
+    class="stack bg-white text-[#8E816E] w-56 h-32 rounded shadow font-inter p-3 fixed" [style.left.px]="position.x"
+    [style.top.px]="position.y">
+    <h4 class="font-semibold">{{ currentStack.title }}</h4>
     <p>{{ currentStack.description }}</p>
   </div>
 </div>

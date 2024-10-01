@@ -46,12 +46,12 @@
     }
 }
 
-.recent h3 {
+.stacks h3 {
     font-family: "Josefin slab", serif;
     font-weight: 600;
     font-size: 20px;
-    color: white;
-    padding: 15px 20px 0px 20px;
+    color: #726655;
+    padding: 20px 25px 0px 25px;
     transform: translateY(-30px);
     width: 15%;
     display: flex;
@@ -61,4 +61,56 @@
     margin: auto;
     background-color: #DCD1C2;
     border-radius: 12px;
+}
+
+.animate-fade-in {
+    animation: fade-in-down 1.8s ease-out forwards;
+    transition: animation 0.3s ease-in-out;
+}
+
+.stack-fade-in {
+    animation: fade-in 0.3s ease-in-out forwards;
+    transition: animation 0.3s ease-in-out;
+}
+
+.stack-fade-out {
+    animation: fade-out 0.3s ease-in-out forwards;
+    transition: animation 0.3s ease-in-out;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    100% {
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
+    }
+    100% {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+}
+
+@keyframes fade-in-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
 }
