@@ -58,7 +58,7 @@
         [(ngModel)]="searchTerm" placeholder="Search posts by name or tags.." (input)="filterPosts()">
     </div>
     <div
-      class="posts grid grid-cols-1 gap-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 justify-center p-40 sm:mt-16 sm:pt-16 animate-fade-in">
+      class="posts grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 justify-center px-40 py-36 sm:mt-16 sm:pt-16 animate-fade-in">
       <div *ngFor="let item of reversedPosts" class="max-w-xl flex flex-col items-center justify-between">
         <article [ngStyle]="{
         'background-image': 'url(' + item.img + ')',
@@ -66,7 +66,7 @@
         'background-position': 'center',
         'background-repeat': 'no-repeat'
       }"
-          class="post relative post-card py-7 px-3 2xl:h-96 xl:h-96 xl:w-96 2xl:w-96 lg:h-80 lg:w-80 flex flex-col justify-end rounded-2xl overflow-hidden shadow-lg font-inter">
+          class="post relative post-card py-7 px-3 2xl:h-96 2xl:w-96 lg:h-80 lg:w-80 flex flex-col justify-end rounded-2xl overflow-hidden shadow-lg font-inter">
 
           <div class="above absolute inset-0 bg-black opacity-50 z-40"></div>
 

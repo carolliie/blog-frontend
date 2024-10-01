@@ -8,9 +8,9 @@
   </nav>
 
   <div *ngIf="menuVisible || isAnimating"
-    class="fixed inset-0 flex flex-col w-full h-full bg-[#F3EEE8] z-50 text-center"
+    class="fixed inset-0 flex flex-col w-full h-full bg-[#F3EEE8] z-50 text-center overflow-scroll"
     [ngClass]="{'animate-slide-in': menuVisible && !isAnimating, 'animate-slide-out': !menuVisible && isAnimating}">
-    <a href="/view-all" class="logo">
+    <a href="/home" class="logo">
       <img src="assets/carollie.svg" alt="carollie logo" />
     </a>
     <div class="options mb-20">
