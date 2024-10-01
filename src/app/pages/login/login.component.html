@@ -1,4 +1,4 @@
-<div class="max-w-md mx-auto font-inter">
+<div class="max-w-md mx-auto font-inter p-20">
   <div class="bg-white p-6 rounded-lg shadow-md">
     <img
       id="profile-img"
@@ -66,6 +66,7 @@
     } @else {
     <div class="bg-green-100 text-green-700 p-3 rounded">
       Logged in as {{ role }}.
+      {{goToPage()}}
     </div>
     }
   </div>
