@@ -25,10 +25,18 @@
       class="w-20 h-20">
     <img (mouseenter)="show('git', $event)" (mouseleave)="hide()" src="assets/git.svg" alt="git" class="w-20 h-20">
   </div>
-  <div [ngClass]="{'block': isVisible, 'hidden': !isVisible, 'stack-fade-in': isVisible && !isAnimating, 'stack-fade-out': isAnimating}"
+  <div
+    [ngClass]="{'block': isVisible, 'hidden': !isVisible, 'stack-fade-in': isVisible && !isAnimating, 'stack-fade-out': isAnimating}"
     class="stack bg-white text-[#8E816E] w-56 h-32 rounded shadow font-inter p-3 fixed" [style.left.px]="position.x"
     [style.top.px]="position.y">
     <h4 class="font-semibold">{{ currentStack.title }}</h4>
     <p>{{ currentStack.description }}</p>
+  </div>
+</div>
+<div class="click text-center bg-white p-10 absolute">
+  <h3 (click)="showClick()">CLICK FOR MORE</h3>
+  <div *ngIf="isClickVisible || isClickAnimating">
+    <h3>Olá mundo</h3>
+    <h4 (click)="hide()">Close</h4>
   </div>
 </div>

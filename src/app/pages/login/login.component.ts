@@ -56,6 +56,6 @@ export class LoginComponent implements OnInit {
   }
 
   goToPage(): void {
-    this.router.navigate(["/view-all"])
+    this.router.navigate(["/blog"])
   }
 }

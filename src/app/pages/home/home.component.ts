@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
 import { NgClass } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   standalone: true,
-  imports: [NgClass]
+  imports: [NgClass, FormsModule]
 })
 
 export class HomeComponent implements OnInit {
   isVisible = false;
   isAnimating = false;
+  isClickVisible = false;
+  isClickAnimating = false;
   position = { x: 0, y: 0 };
   currentStack = { title: '', description: '' };
 
@@ -48,6 +51,11 @@ export class HomeComponent implements OnInit {
       x: event.clientX + 20,
       y: event.clientY + 20
     };
+  }
+
+  showClick() {
+    this.isClickVisible = true;
+    this.isClickAnimating = false;
   }
 
   content?: string;

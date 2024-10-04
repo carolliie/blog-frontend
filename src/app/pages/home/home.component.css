@@ -78,6 +78,16 @@
     transition: animation 0.3s ease-in-out;
 }
 
+.click {
+    h3 {
+        font-family: "Viaoda Libre", serif;
+        font-size: 18px;
+        text-decoration: underline;
+    }
+
+    border-radius: 0px 0px 40px 40px;
+}
+
 @keyframes fade-in {
     0% {
         opacity: 0;

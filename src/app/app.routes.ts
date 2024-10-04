@@ -15,7 +15,7 @@ import { EditPostComponent } from './pages/edit-post/edit-post.component';
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'create-post', component: CreatePostComponent },
-  { path: 'view-all', component: ViewAllComponent},
+  { path: 'blog', component: ViewAllComponent},
   { path: 'view-post/:slug', component: ViewPostComponent},
   { path: 'delete-post', component: DeletePostComponent},
   { path: 'edit-post/:slug', component: EditPostComponent},

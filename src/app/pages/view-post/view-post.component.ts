@@ -75,7 +75,7 @@ export class ViewPostComponent implements OnInit {
       this.postService.deletePostById(id).subscribe({
         next: () => {
           this.message = 'Post deleted successfully';
-          this.router.navigate(['/view-all']);
+          this.router.navigate(['/blog']);
         },
         error: (err) => {
           this.message = 'Failed to delete post:', err;
