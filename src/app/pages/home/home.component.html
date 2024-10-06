@@ -33,10 +33,23 @@
     <p>{{ currentStack.description }}</p>
   </div>
 </div>
-<div class="click text-center bg-white p-10 absolute">
-  <h3 (click)="showClick()">CLICK FOR MORE</h3>
-  <div *ngIf="isClickVisible || isClickAnimating">
-    <h3>Olá mundo</h3>
-    <h4 (click)="hide()">Close</h4>
+
+<div
+  class="click text-start bg-white w-full px-10 py-14 absolute flex flex-col justify-center items-center transition-container"
+  style="left: 50%; transform: translateX(-50%);">
+  <h3 (click)="showClick()" [ngClass]="{'hidden': isClickVisible}">CLICK FOR MORE</h3>
+
+  <div class="content" [ngClass]="{'expanded': isClickVisible, 'collapsed': !isClickVisible}">
+    <div>
+      <h1 class="mb-5">More about <span class="text-[#88B2C4]">Carole</span>?</h1>
+      <p>“I'm <span class="text-[#88B2C4]">Ana Caroline Vieira</span>, a Computer Science student and software
+        engineering enthusiast.
+
+        As a <span class="text-[#88B2C4]">Computer Science student</span>, I am immersed in the world of technology,
+        looking for new STACKS and skills to
+        LEARN.“
+      </p>
+    </div>
+    <h3 (click)="hideClick()" class="text-center">Close</h3>
   </div>
 </div>

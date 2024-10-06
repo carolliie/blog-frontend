@@ -70,12 +70,10 @@
 
 .stack-fade-in {
     animation: fade-in 0.3s ease-in-out forwards;
-    transition: animation 0.3s ease-in-out;
 }
 
 .stack-fade-out {
     animation: fade-out 0.3s ease-in-out forwards;
-    transition: animation 0.3s ease-in-out;
 }
 
 .click {
@@ -85,8 +83,43 @@
         text-decoration: underline;
     }
 
+    h1 {
+        font-family: "Viaoda Libre", serif;
+        font-size: 88px;
+    }
+
+    p {
+        text-transform: uppercase;
+        font-size: 50px;
+        font-family: 'Inter', serif;
+        font-weight: 600;
+    }
+
     border-radius: 0px 0px 40px 40px;
 }
+
+.transition-container {
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  }
+  
+  .content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  }
+  
+  .content.expanded {
+    max-height: 700px;
+    opacity: 1;
+  }
+  
+  .content.collapsed {
+    max-height: 0;
+    opacity: 0;
+  }
+  
 
 @keyframes fade-in {
     0% {

@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
 import { NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   standalone: true,
-  imports: [NgClass, FormsModule]
+  imports: [NgClass, FormsModule, CommonModule]
 })
 
 export class HomeComponent implements OnInit {
@@ -43,6 +44,14 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.isVisible = false;
       this.isAnimating = false;
+    }, 400);
+  }
+
+  hideClick() {
+    this.isClickAnimating = true;
+    setTimeout(() => {
+      this.isClickVisible = false;
+      this.isClickAnimating = false;
     }, 400);
   }
 
