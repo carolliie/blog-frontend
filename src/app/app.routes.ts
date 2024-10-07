@@ -13,7 +13,7 @@ import { DeletePostComponent } from './pages/delete-post/delete-post.component';
 import { EditPostComponent } from './pages/edit-post/edit-post.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'create-post', component: CreatePostComponent },
   { path: 'blog', component: ViewAllComponent},
   { path: 'view-post/:slug', component: ViewPostComponent},
