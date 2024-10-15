@@ -1,19 +1,19 @@
-import { AfterViewChecked, AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
 import { NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { gsap } from 'gsap';
+import { ProjectsComponent } from "./projects/projects.component";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   standalone: true,
-  imports: [NgClass, FormsModule, CommonModule]
+  imports: [NgClass, FormsModule, CommonModule, ProjectsComponent]
 })
 
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit {
   isVisible = false;
   isAnimating = false;
   isClickVisible = false;
@@ -90,37 +90,5 @@ export class HomeComponent implements OnInit, AfterViewInit {
         }
       }
     });
-  }
-
-  @ViewChild('path', { static: true }) path!: ElementRef<SVGPathElement>;
-
-  ngAfterViewInit(): void {
-    const pathElement = this.path.nativeElement;
-    const pathLength = pathElement.getTotalLength();
-
-    // Inicializa os valores de stroke-dasharray e stroke-dashoffset
-    pathElement.style.strokeDasharray = `${pathLength}`;
-    pathElement.style.strokeDashoffset = `${pathLength}`;
-
-    if (this.path) {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            gsap.to(pathElement, {
-              strokeDashoffset: 0,
-              duration: 3,
-              ease: 'power2.out'
-            });
-            observer.unobserve(this.path.nativeElement); // Parar de observar após a animação
-          }
-        },
-        {
-          root: null, // A página inteira será o root
-          threshold: 0.5 // 50% do elemento deve estar visível para ativar a animação
-        }
-      );
-
-      observer.observe(this.path.nativeElement);
-    }
   }
 }

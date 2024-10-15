@@ -90,7 +90,7 @@
 
     p {
         text-transform: uppercase;
-        font-size: 50px;
+        font-size: 62px;
         font-family: 'Inter', serif;
         font-weight: 600;
     }
@@ -111,7 +111,7 @@
 }
 
 .content.expanded {
-    max-height: 700px;
+    max-height: 750px;
     opacity: 1;
 }
 
@@ -135,71 +135,6 @@
     position: absolute;
     bottom: -5px;
 }
-
-.projects {
-    h2 {
-        font-family: "Viaoda Libre", serif;
-        font-size: 110px;
-    }
-
-    h1 {
-        font-family: "Snell", serif;
-        font-size: 160px;
-        margin-top: -60px;
-    }
-
-    p {
-        font-family: "Josefin slab", serif;
-        font-size: 16px;
-        width: 100%;
-        text-align: start;
-    }
-
-    .read {
-        margin-top: -40px;
-        padding-top: -20px;
-        transform: translate(90%, 80%);
-        width: 100%;
-
-        p {
-            width: 40%;
-            font-size: 20px;
-        }
-    }
-}
-
-.floating {
-    animation: float 5s ease-in-out infinite;
-    position: absolute;
-    left: 25%;
-    margin-top: -20%;
-}
-
-.word-container {
-    position: relative;
-
-    .word {
-        position: relative;
-    }
-
-    .swoosh {
-        position: absolute;
-        top: -55%;
-        left: -15%;
-    }
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px) rotate(15deg);
-      }
-      100% {
-        transform: translateY(0) rotate(0deg);
-      }
-  }
 
 @keyframes fade-in {
     0% {

@@ -1,0 +1,87 @@
+.projects {
+    h2 {
+        font-family: "Viaoda Libre", serif;
+        font-size: 110px;
+    }
+
+    h1 {
+        font-family: "Snell", serif;
+        font-size: 160px;
+        margin-top: -60px;
+    }
+
+    p {
+        font-family: "Josefin slab", serif;
+        font-size: 16px;
+        width: 100%;
+        text-align: start;
+    }
+
+    .read {
+        margin-top: -40px;
+        padding-top: -20px;
+        transform: translate(90%, 80%);
+        width: 100%;
+
+        p {
+            width: 40%;
+            font-size: 20px;
+        }
+    }
+}
+
+.floating {
+    animation: float 5s ease-in-out infinite;
+    position: absolute;
+    left: 25%;
+    margin-top: -20%;
+}
+
+.word-container {
+    position: relative;
+
+    .word {
+        position: relative;
+    }
+
+    .swoosh {
+        position: absolute;
+        top: -55%;
+        left: -15%;
+    }
+}
+
+.parallax {
+    h1 {
+        font-family: "Snell", serif;
+        font-size: 100px;
+    }
+
+    span {
+        font-family: "Viaoda Libre", serif;
+        font-size: 36px;
+    }
+
+    p {
+        font-family: "Inter", serif;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .project {
+        border-radius: 1700px 1700px 0 0;
+        height: 80vh;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px) rotate(15deg);
+      }
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+  }
