@@ -1,0 +1,148 @@
+.recent h3 {
+    font-family: "Josefin slab", serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: black;
+    padding: 15px 20px 0px 20px;
+    transform: translateY(-30px);
+    width: 15%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    background-color: white;
+    border-radius: 12px;
+}
+
+.all h3 {
+    font-family: "Josefin slab", serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: black;
+    padding: 15px 20px 0px 20px;
+    transform: translateY(-30px);
+    width: 15%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    background-color: #F6F6F6;
+    border-radius: 12px;
+}
+
+.little {
+    animation: floating 5s ease-in-out infinite;
+}
+
+.big {
+    animation: float 5s ease-in-out infinite;
+}
+
+.animate-fade-in {
+    animation: fade-in 1.8s ease-out forwards;
+    transition: animation 0.3s ease-in-out;
+}
+
+.post .excerpt {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease-in-out, max-height 1.5s ease-in-out;
+}
+
+.post:hover .excerpt {
+    opacity: 1;
+    max-height: 500px;
+    transition: opacity 0.3s ease-in-out, max-height 1.5s ease-in-out;
+    color: black !important;
+}
+
+.post:hover h6 {
+    color: black !important;
+}
+
+.post:hover .tag {
+    background-color: black !important;
+    color: white;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.post .tag {
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.post:hover {
+    .post h6 {
+        color: black;
+    }
+
+    .above {
+        background-color: white;
+    }
+}
+
+.above:hover {
+    background-color: white;
+    opacity: 0.5;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.above {
+    transition: background-color 0.3s ease-in-out;
+}
+
+.title h1 {
+    font-family: "Test Tiempos Text", serif;
+    font-size: 62px;
+    font-weight: 300;
+    color: white;
+    width: 95%;
+}
+
+.view {
+    font-family: "Josefin slab", serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: white;
+    text-decoration: underline;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px) rotate(15deg);
+      }
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+  }
+
+  @keyframes floating {
+    0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(10px) rotate(-15deg);
+      }
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+  }

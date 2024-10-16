@@ -1,16 +1,18 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
 import { NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ProjectsComponent } from "./projects/projects.component";
+import { RecentPostsComponent } from "./recent-posts/recent-posts.component";
+import { FormsComponent } from './forms/forms.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   standalone: true,
-  imports: [NgClass, FormsModule, CommonModule, ProjectsComponent]
+  imports: [NgClass, FormsModule, CommonModule, ProjectsComponent, RecentPostsComponent, FormsComponent]
 })
 
 export class HomeComponent implements OnInit {
@@ -20,7 +22,9 @@ export class HomeComponent implements OnInit {
   isClickAnimating = false;
   position = { x: 0, y: 0 };
   currentStack = { title: '', description: '' };
+  content?: string;
 
+  constructor(private userService: UserService) { }
   // Definindo um tipo que corresponde às chaves de 'stacks'
   stackKeys: keyof typeof this.stacks = "java";
 
@@ -67,10 +71,6 @@ export class HomeComponent implements OnInit {
     this.isClickVisible = true;
     this.isClickAnimating = false;
   }
-
-  content?: string;
-
-  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.userService.getPublicContent().subscribe({

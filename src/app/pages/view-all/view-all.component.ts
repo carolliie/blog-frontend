@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './view-all.component.html',
   styleUrl: './view-all.component.css'
 })
-export class ViewAllComponent implements OnInit  {
+export class ViewAllComponent implements OnInit {
 
   allPosts: any;
   post: any;
@@ -36,14 +36,6 @@ export class ViewAllComponent implements OnInit  {
   get reversedPosts() {
     return [...this.allPosts].reverse();
   }
-
-  /*getPostById(id:number) {
-    this.postService.getPostById(id).subscribe(res => {
-      this.post = res;
-    }, error => {
-      console.error('Method not implemented.');
-    })
-  }*/
 
   getPostBySlug(slug: string) {
     this.postService.getPostBySlug(slug).subscribe(res => {

@@ -1,0 +1,62 @@
+<div class="recent bg-[#95C7DC]">
+    <div class="bg-white">
+        <h3 class="text-center justify-center">Recent posts</h3>
+    </div>
+    <div class="flex flex-row justify-between items-center px-40 pt-28">
+        <div class="title flex flex-row justify-start items-center gap-6">
+            <img src="assets/line2.svg" alt="line">
+            <h1>Read some of my recent discoveries</h1>
+        </div>
+
+        <div class="flex flex-row items-end">
+            <img src="assets/star.svg" alt="little star" class="little">
+            <img src="assets/star2.svg" alt="big star" class="big">
+        </div>
+    </div>
+
+    <div class="justify-center pb-12">
+        <div
+            class="posts grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 justify-center px-40 py-16 sm:mt-16 sm:pt-16 animate-fade-in">
+            <div *ngFor="let item of reversedPosts, let i = index"
+                class="max-w-xl flex flex-col items-center justify-between">
+                <article [ngStyle]="{
+          'background-image': 'url(' + item.img + ')',
+          'background-size': 'cover',
+          'background-position': 'center',
+          'background-repeat': 'no-repeat'
+        }" *ngIf="i < 3"
+                    class="post relative post-card py-7 px-3 2xl:h-96 2xl:w-96 lg:h-80 lg:w-80 flex flex-col justify-end rounded-2xl overflow-hidden shadow-lg font-inter">
+
+                    <div class="above absolute inset-0 bg-black opacity-50 z-10"></div>
+
+                    <div class="relative z-20 flex flex-col items-start gap-2 p-4 text-white">
+                        <a href="/view-post/{{ item.slug }}">
+                            <span *ngIf="item.tags?.length > 0"
+                                class="tag relative z-50 text-xs rounded-full bg-white px-3 py-1.5 font-medium text-black">
+                                {{ item.tags.join(', ') }}
+                            </span>
+
+                            <h6 class="mt-3 text-lg font-semibold">
+                                {{ item.name }}
+                            </h6>
+                        </a>
+                        <div class="excerpt mt-5 line-clamp-3 text-sm"
+                            [innerHTML]="item.content ? (item.content.length > 600 ? item.content.substr(0, 600) + '...' : item.content) : ''">
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <a href="/blog">
+            <h2 class="view text-center">View blog</h2>
+        </a>
+    </div>
+    
+    <div class="px-28">
+        <svg width="136" height="105" viewBox="0 0 136 105" fill="none" xmlns="http://www.w3.org/2000/svg"
+            class="flower">
+            <path #path
+                d="M123.634 86.177C129.131 65.9681 137.99 25.2088 129.454 23.8426C118.784 22.1348 97.4441 60.5601 96.4742 70.8069C95.5042 81.0536 94.5342 15.3035 80.9543 4.20282C67.3744 -6.89783 68.3444 62.268 72.2244 70.8069C76.1043 79.3457 24.6944 30.6732 6.26462 33.2349C-12.1652 35.7966 51.8538 108.378 87.7439 101.547"
+                stroke="white" stroke-width="6" stroke-linecap="round" />
+        </svg>
+    </div>
