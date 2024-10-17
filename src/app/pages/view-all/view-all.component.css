@@ -37,6 +37,80 @@
     }
 }
 
+@media (max-width: 640px) {
+    .welcome {
+        h2 {
+            font-family: "Viaoda Libre", serif;
+            font-size: 65px;
+        }
+    
+        h1 {
+            font-family: "Snell", serif;
+            font-size: 120px;
+        }
+    
+        h3 {
+            font-size: 50px;
+            font-family: "Viaoda Libre", serif;
+            color: #F6BAC6;
+            width: 90%;
+            text-align: start;
+            line-height: 55px;
+            margin: auto;
+            transform: translateX(-30%);
+        }
+    
+        span {
+            font-size: 18px;
+            font-family: "Viaoda Libre", serif;
+            margin: -10px 0px -85px 200px;
+        }
+    
+        p {
+            font-family: "Josefin slab", serif;
+            font-size: 18px;
+            width: 100%;
+            text-align: start;
+        }
+    
+        .read {
+            transform: translate(20%, 30%);
+        }
+    }
+
+    .title {
+        padding: 0 40px !important;
+        margin-bottom: 12px !important;
+
+        h1 {
+            font-size: 32px !important;
+            width: 100% !important; 
+        }
+    }
+
+    .recent h3 {
+        font-size: 20px;
+        padding: 25px 40px 0px 40px !important;
+        width: 50% !important;
+    }
+
+    .posts {
+        padding: 16px 0 36px 0 !important;
+    }
+
+    .post {
+        width: 300px;
+        height: 320px;
+    }
+
+    .search-input {
+        justify-content: center;
+        transform: translateX(15%);
+        margin-bottom: 16px;
+        width: 320px;
+    }
+}
+
 .recent h3 {
     font-family: "Josefin slab", serif;
     font-weight: 600;

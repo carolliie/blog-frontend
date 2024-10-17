@@ -2,15 +2,53 @@
     background-color: #F3EEE8;
 }
 
+.post-name {
+    font-family: "Viaoda Libre", serif;
+    font-size: 60px;
+}
+
+@media (max-width: 640px) {
+    .post-name {
+        font-size: 26px !important;
+        padding: 14px;
+    }
+
+    .paragraph {
+        padding: 22px;
+    }
+
+    .content {
+        padding: 22px;
+    }
+
+    .icons {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .author {
+        padding: 22px;
+        justify-content: space-around;
+    }
+
+    .pfp {
+        height: 10vh;
+    }
+
+    .author-n {
+        gap: 8px;
+
+        p {
+            width: 90%;
+        }
+    }
+}
+
 .post-excerpt::first-letter {
     font-size: 45px;
     font-weight: bold;
     color: #88B2C4;
     text-transform: capitalize;
-    font-family: "Viaoda Libre", serif;
-}
-
-.post-name {
     font-family: "Viaoda Libre", serif;
 }
 

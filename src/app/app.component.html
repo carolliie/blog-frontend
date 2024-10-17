@@ -1,5 +1,5 @@
 <div id="app" class="app">
-  <nav class="bg-inherit flex flex-row justify-between fixed w-full z-40">
+  <nav class="flex flex-row justify-between fixed w-full z-40">
     <a href="/home" class="logo">
       <img src="assets/carollie.svg" alt="carollie logo" />
     </a>
@@ -16,19 +16,27 @@
     <div class="options mb-20">
       <ul class="justify-center mt-2 text-black">
         <li>
-          <a href="/home" class="" routerLink="/home" routerLinkActive="/home" (click)="showMenu()">Home</a>
+          <a href="/home" class="" routerLink="/home" routerLinkActive="/home" (click)="showMenu()">home</a>
         </li>
 
         <li>
-          <a href="/blog" class="" routerLink="/blog" routerLinkActive="/blog" (click)="showMenu()">Blog</a>
+          <a href="/blog" class="" routerLink="/blog" routerLinkActive="/blog" (click)="showMenu()">blog</a>
         </li>
 
         <li>
-          <a href="/home/#stacks" (click)="showMenu()">Stacks</a>
+          <a href="/home/#stacks" (click)="showMenu()">stacks</a>
         </li>
 
         <li>
-          <a href="/home/#about" (click)="showMenu()">About</a>
+          <a href="/home/#about" (click)="showMenu()">about</a>
+        </li>
+
+        <li>
+          <a href="/home/#projects" (click)="showMenu()">projects</a>
+        </li>
+
+        <li>
+          <a href="/home/#contact" (click)="showMenu()">contact</a>
         </li>
 
         @if (isLoggedIn) {

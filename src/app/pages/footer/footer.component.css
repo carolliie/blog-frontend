@@ -2,6 +2,47 @@
     font-family: "Josefin slab", serif;
 }
 
-.footer p {
+.dev {
     margin-left: 320px;
+}
+
+@media (max-width: 640px) {
+    .footer {
+        padding: 20px 0 20px 0;
+    }
+
+    .footer h1 {
+        font-size: 90px;
+    }
+
+    .dev {
+        font-size: 32px;
+        margin-left: 236px;
+        margin-top: -15px;
+    }
+
+    .network {
+        font-size: 28px;
+        margin-top: 20px;
+        padding: 10px;
+        gap: 20px;
+    }
+
+    .logo {
+        padding: 60px;
+    }
+
+    .bar {
+        padding: 35px 0 15px 0;
+        gap: 20px;
+
+        ul {
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }

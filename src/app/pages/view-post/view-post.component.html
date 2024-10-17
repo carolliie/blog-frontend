@@ -1,19 +1,19 @@
-<div class="mx-auto p-4 justify-center" *ngIf="post">
-    <div class="w-full grid mx-auto bg-white overflow-hidden justify-center p-12">
-        <p class="text-gray-800 text-center text-6xl px-14 mb-4 post-name">{{ post.name }}</p>
+<div class="mx-auto lg:px-4 sm:px-0 py-36 justify-center overflow-hidden" *ngIf="post">
+    <div class="w-full flex flex-col mx-auto bg-white justify-center lg:p-12 sm:p-0">
+        <h1 class="text-gray-800 text-center lg:px-40 sm:px-12 mb-4 post-name">{{ post.name }}</h1>
         <span class="text-gray-500 text-sm text-center font-inter">Publicado em: {{ post.date | date:'medium' }}</span>
 
-        <div class="p-20 grid grid-cols-2 justify-center">
-            <div class="mb-4">
+        <div class="paragraph lg:p-20 lg:flex lg:flex-row sm:flex-col lg:columns-2 lg:justify-evenly sm:justify-center">
+            <div class="mb-4 lg:w-2/5 sm:w-full">
                 <div class="text-black mt-4 post-excerpt font-inter" [innerHTML]="getFirstParagraph()"></div>
                 <span *ngIf="post.tags?.length > 0" class="text-gray-500 text-sm text-center font-inter">Palavras-chave: <span class="capitalize">{{ post.tags }}</span></span>
             </div>
 
             <div>
-                <img class="object-cover" [src]="post?.img" alt="{{ post?.name }}">
+                <img class="object-cover rounded-lg" [src]="post?.img" alt="{{ post?.name }}">
 
                 @if (isLoggedIn) {
-                <ul class="flex space-x-4 mt-2 ml-auto">
+                <ul class="flex space-x-4 mt-2 ml-auto font-inter">
                     <li>
                         <a class="hover:underline text-[#D73234] font-medium" [routerLink]="['/edit-post', post.slug]">Edit post</a>
                     </li>
@@ -27,13 +27,13 @@
             </div>
         </div>
 
-        <div class="flex px-20 justify-center items-center w-full">
+        <div class="content flex flex-col px-52 justify-center items-center">
             <div class="text-black mt-4 post-content font-inter" [innerHTML]="getContentWithoutFirstParagraph()"></div>
         </div>
 
-        <div class="px-20 py-16 flex flex-row justify-between items-center w-full">
-            <div class="flex flex-row gap-8 justify-center items-center author">
-                <img src="assets/author.svg" alt="author" />
+        <div class="author lg:px-52 lg:py-16 flex lg:flex-row sm:flex-col justify-between items-center w-full">
+            <div class="author-n flex flex-row gap-8 justify-center items-center">
+                <img src="assets/author.svg" alt="author" class="pfp"/>
                 <div class="w-72">
                     <h3 class="text-xl">Ana Caroline Vieira</h3>
                     <p class="font-inter italic text-sm">Estudante de Ciência da Computação</p>
