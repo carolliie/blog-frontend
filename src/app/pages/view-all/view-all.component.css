@@ -34,6 +34,10 @@
     .read {
         margin-right: 160px;
         margin-top: -100px;
+
+        p {
+            font-size: 20px;
+        }
     }
 }
 
@@ -43,12 +47,12 @@
             font-family: "Viaoda Libre", serif;
             font-size: 65px;
         }
-    
+
         h1 {
             font-family: "Snell", serif;
             font-size: 120px;
         }
-    
+
         h3 {
             font-size: 50px;
             font-family: "Viaoda Libre", serif;
@@ -59,22 +63,29 @@
             margin: auto;
             transform: translateX(-30%);
         }
-    
+
         span {
             font-size: 18px;
             font-family: "Viaoda Libre", serif;
             margin: -10px 0px -85px 200px;
         }
-    
+
         p {
             font-family: "Josefin slab", serif;
-            font-size: 18px;
             width: 100%;
             text-align: start;
         }
-    
+
         .read {
             transform: translate(20%, 30%);
+            p {
+                font-size: 16px;
+            }
+
+            img {
+                height: 180px;
+                width: 10px;
+            }
         }
     }
 
@@ -84,7 +95,7 @@
 
         h1 {
             font-size: 32px !important;
-            width: 100% !important; 
+            width: 100% !important;
         }
     }
 

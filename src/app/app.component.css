@@ -48,3 +48,7 @@
     font-family: 'Snell', serif;
     font-size: 88px;
 }
+
+.app {
+    scroll-behavior: smooth;
+}

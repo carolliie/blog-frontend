@@ -67,7 +67,7 @@ export class AppComponent {
 
   scrambleLinkedin() {
     let pos = 0;
-    this.clearIntervalLinkedin(); 
+    this.clearIntervalLinkedin();
 
     this.intervalRefLinkedin = setInterval(() => {
       const scrambled = this.TARGET_TEXT.split("")

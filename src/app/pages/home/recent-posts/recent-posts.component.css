@@ -109,6 +109,47 @@
     text-decoration: underline;
 }
 
+@media (max-width: 640px) {
+    .recent h3 {
+        font-size: 20px !important;
+        padding: 25px 40px 0px 40px !important;
+        width: 50% !important;
+    }
+
+    .discover {
+        padding: 80px 0 30px 0;
+        justify-content:space-around;
+
+        .stars {
+            transform: translateX(-30%);
+        }
+    }
+
+    .title {
+        padding: 0 40px !important;
+        margin-bottom: 12px !important;
+        gap: 8px;
+
+        h1 {
+            font-size: 32px !important;
+            width: 92% !important;
+        }
+    }
+
+    .posts {
+        padding: 16px 0 16px !important;
+    }
+
+    .post {
+        width: 300px;
+        height: 320px;
+    }
+
+    .view {
+        margin-top: -20px;
+    }
+}
+
 @keyframes fade-in {
     0% {
         opacity: 0;
