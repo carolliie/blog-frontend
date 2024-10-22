@@ -42,13 +42,13 @@
         @if (isLoggedIn) {
         <li>
           <a href="/create-post" class="" routerLink="/create-post" routerLinkActive="/create-post"
-            (click)="showMenu()">Create
-            Post</a>
+            (click)="showMenu()">create
+            post</a>
         </li>
 
         <ul class="justify-center mt-2 ml-auto text-black">
           <li>
-            <a href="/login" class="" (click)="logout()" (click)="showMenu()">LogOut</a>
+            <a href="/login" class="" (click)="logout()" (click)="showMenu()">logOut</a>
           </li>
         </ul>
         }
@@ -57,11 +57,7 @@
       @if (!isLoggedIn) {
       <ul class="justify-center mt-2 ml-auto text-black">
         <li>
-          <a href="/register" class="" routerLink="/register" routerLinkActive="/register" (click)="showMenu()">Sign
-            Up</a>
-        </li>
-        <li>
-          <a href="/login" class="" routerLink="/login" routerLinkActive="/login" (click)="showMenu()">Login</a>
+          <a href="/login" class="" routerLink="/login" routerLinkActive="/login" (click)="showMenu()">login</a>
         </li>
       </ul>
       }

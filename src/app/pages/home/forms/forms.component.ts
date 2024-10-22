@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { response } from 'express';
+import { environment } from '../../../enviroment/enviroment.prod';
 
 @Component({
   selector: 'app-forms',
@@ -35,7 +36,7 @@ export class FormsComponent {
     }
 
     if (this.contactForm.valid) {
-      this.http.post('http://localhost:8080/api/send-email', this.contactForm.value, { responseType: 'text' })
+      this.http.post(`${environment.API_ADDRESS}` + '/api/send-email', this.contactForm.value, { responseType: 'text' })
         .subscribe(
           (res: any) => {
             this.log = res;

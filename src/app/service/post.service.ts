@@ -2,8 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StorageService } from '../pages/_services/storage.service';
+import { environment } from '../enviroment/enviroment.prod';
 
-const BASIC_URL = "http://localhost:8080/"
+const BASIC_URL = `${environment.API_ADDRESS}`+ "/";
 
 @Injectable({
   providedIn: 'root'
@@ -28,10 +29,6 @@ export class PostService {
   getAllPosts(): Observable<any> {
     return this.http.get(BASIC_URL + `api/posts`);
   }
-
-  /*getPostById(id:number): Observable<any> {
-    return this.http.get(BASIC_URL + `api/posts/` + id);
-  }*/
 
   getPostBySlug(slug:string): Observable<any> {
     return this.http.get(BASIC_URL + `api/posts/${slug}`);
