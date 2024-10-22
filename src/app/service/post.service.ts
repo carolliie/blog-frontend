@@ -2,9 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StorageService } from '../pages/_services/storage.service';
-import { environment } from '../enviroment/enviroment.prod';
 
-const BASIC_URL = `${environment.API_ADDRESS}`+ "/";
+const BASIC_URL = "https://blog-backend-production-f7e6.up.railway.app/";
 
 @Injectable({
   providedIn: 'root'

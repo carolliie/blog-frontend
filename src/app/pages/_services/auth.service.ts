@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../enviroment/enviroment.prod';
 
-const AUTH_API = `${environment.API_ADDRESS}` + '/auth/';
+const AUTH_API = 'https://blog-backend-production-f7e6.up.railway.app/auth/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
