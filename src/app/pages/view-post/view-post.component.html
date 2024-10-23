@@ -40,9 +40,9 @@
                 </div>
             </div>
             <div class="icons flex flex-row justify-center gap-8">
-                <img class="w-10 h-10" src="assets/linkedin.svg" alt="linkedin">
-                <img class="w-10 h-10" src="assets/instagram.svg" alt="instagram">
-                <img class="w-10 h-10" src="assets/copy-link.svg" alt="copy link">
+                <a href=""><img class="w-10 h-10" src="assets/linkedin.svg" alt="linkedin"></a>
+                <a [href]="'https://wa.me/?text=' + whatsappMessage" target="_blank"><img class="w-10 h-10" src="assets/whatsapp.svg" alt="whatsapp"></a>
+                <button (click)="copyLink()"><img class="w-10 h-10" src="assets/copy-link.svg" alt="copy link"></button>
             </div>
         </div>
     </div>

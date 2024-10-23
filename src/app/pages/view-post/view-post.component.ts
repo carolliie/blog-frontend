@@ -16,7 +16,28 @@ export class ViewPostComponent implements OnInit {
   post: any;
   isLoggedIn = false;
   message = "";
+  whatsappMessage!: string;
 
+  copyLink(): void {
+    const link = `https://carollie.netlify.app/view-post/${this.post.slug}`;
+
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(link)
+        .then(() => {
+          alert('Link copiado para a área de transferência!');
+        })
+        .catch(err => {
+          alert('Erro ao copiar o link');
+        });
+    } 
+  }
+
+  generateWhatsappMessage(): void {
+    const titleMessage = "Veja este post incrível!";
+    const postUrl = `https://carollie.netlify.app/view-post/${this.post.slug}`;
+
+    this.whatsappMessage = encodeURIComponent(`${titleMessage}\nLink:${postUrl}`); //erro
+  }
 
   getFirstParagraph(): string {
     const paragraph = this.post.content;

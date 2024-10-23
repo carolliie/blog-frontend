@@ -53,14 +53,6 @@
         </ul>
         }
       </ul>
-
-      @if (!isLoggedIn) {
-      <ul class="justify-center mt-2 ml-auto text-black">
-        <li>
-          <a href="/login" class="" routerLink="/login" routerLinkActive="/login" (click)="showMenu()">login</a>
-        </li>
-      </ul>
-      }
       <div class="flex flex-row justify-evenly font-inter text-4xl font-bold p-10">
         <a href="https://www.linkedin.com/in/ana-caroline-vieira-526374274/" class="w-48" id="linkedin"
           #encryptButton (mouseenter)="scrambleLinkedin()" (mouseleave)="stopScrambleLinkedin()">{{ text }}</a>
