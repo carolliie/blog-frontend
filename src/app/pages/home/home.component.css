@@ -1,17 +1,17 @@
 .welcome {
     h2 {
-        font-family: "Viaoda Libre", serif;
+        font-family: 'Viaoda Libre', serif;
         font-size: 110px;
     }
 
     h1 {
-        font-family: "Snell", serif;
+        font-family: 'Snell', serif;
         font-size: 160px;
     }
 
     h3 {
         font-size: 160px;
-        font-family: "Viaoda Libre", serif;
+        font-family: 'Viaoda Libre', serif;
         color: #F6BAC6;
         width: 100%;
         text-align: start;
@@ -22,12 +22,12 @@
 
     span {
         font-size: 18px;
-        font-family: "Viaoda Libre", serif;
+        font-family: 'Viaoda Libre', serif;
         margin: 10px 0px -130px 470px;
     }
 
     p {
-        font-family: "Josefin slab", serif;
+        font-family: 'Josefin slab', serif;
         font-size: 16px;
         width: 100%;
         text-align: start;
@@ -47,7 +47,7 @@
 }
 
 .stacks h3 {
-    font-family: "Josefin slab", serif;
+    font-family: 'Josefin slab', serif;
     font-weight: 600;
     font-size: 20px;
     color: #726655;
@@ -78,13 +78,13 @@
 
 .click {
     h3 {
-        font-family: "Viaoda Libre", serif;
+        font-family: 'Viaoda Libre', serif;
         font-size: 20px;
         text-decoration: underline;
     }
 
     h1 {
-        font-family: "Viaoda Libre", serif;
+        font-family: 'Viaoda Libre', serif;
         font-size: 88px;
     }
 
@@ -111,7 +111,7 @@
 }
 
 .content.expanded {
-    max-height: 750px;
+    max-height: 122vh;
     opacity: 1;
 }
 
@@ -130,7 +130,7 @@
     display: block;
     width: 100%;
     height: 20px;
-    background: url("/assets/zigzag.svg") no-repeat center;
+    background: url('/assets/zigzag.svg') no-repeat center;
     background-size: contain;
     position: absolute;
     bottom: -5px;
@@ -141,19 +141,19 @@
         padding: 180px 0 120px;
 
         h2 {
-            font-family: "Viaoda Libre", serif;
+            font-family: 'Viaoda Libre', serif;
             font-size: 65px;
         }
 
         h1 {
-            font-family: "Snell", serif;
+            font-family: 'Snell', serif;
             font-size: 100px;
             margin-left: 50px;
         }
 
         h3 {
             font-size: 70px;
-            font-family: "Viaoda Libre", serif;
+            font-family: 'Viaoda Libre', serif;
             color: #F6BAC6;
             width: 90%;
             text-align: start;
@@ -164,7 +164,7 @@
 
         span {
             font-size: 18px;
-            font-family: "Viaoda Libre", serif;
+            font-family: 'Viaoda Libre', serif;
             margin: -10px 0px -75px 300px;
         }
 
@@ -177,7 +177,7 @@
 
             p {
                 font-size: 17px;
-                font-family: "Josefin slab", serif;
+                font-family: 'Josefin slab', serif;
                 text-align: start;
                 width: 70%;
             }
@@ -190,7 +190,7 @@
     }
 
     .stacks h3 {
-        font-family: "Josefin slab", serif;
+        font-family: 'Josefin slab', serif;
         font-weight: 600;
         font-size: 20px;
         color: #726655;
