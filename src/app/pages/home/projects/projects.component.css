@@ -149,7 +149,19 @@
     
         .project {
             border-radius: 1700px 1700px 0 0;
-            height: 80vh;
+            height: 70vh;
+
+            h1 {
+                font-size: 65px;
+            }
+
+            span {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 15px;
+            }
         }
     }
 }

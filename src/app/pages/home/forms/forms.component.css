@@ -64,15 +64,22 @@
     }
 
     .forms-title {
+        margin-left: 22px;
+        margin-bottom: -20px;
+
         h1 {
-            font-size: 70px;
+            font-size: 60px;
         }
 
         span {
             font-size: 28px;
+            transform: translate(36%, -70%);
         }
     }
     
+    .pfp {
+        padding: 20px;
+    }
 }
 
 @keyframes fade-in {

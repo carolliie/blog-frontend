@@ -1,10 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-html, body { height: 100%; }
+html, body { 
+    height: 100%;
+}
+
 body { 
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif; 
     background-color: #F3EEE8;
     cursor: url(assets/arrow.svg), default;
+}
+
+@media (max-width: 640px) {
+    html, body {
+        overflow-x: hidden !important;
+        height: auto;
+    }
 }
