@@ -16,7 +16,6 @@ export class ViewPostComponent implements OnInit {
   post: any;
   isLoggedIn = false;
   message = "";
-  whatsappMessage!: string;
 
   copyLink(): void {
     const link = `https://carollie.netlify.app/view-post/${this.post.slug}`;
@@ -30,13 +29,6 @@ export class ViewPostComponent implements OnInit {
           alert('Erro ao copiar o link');
         });
     } 
-  }
-
-  generateWhatsappMessage(): void {
-    const titleMessage = "Veja este post incrível!";
-    const postUrl = `https://carollie.netlify.app/view-post/${this.post.slug}`;
-
-    this.whatsappMessage = encodeURIComponent(`${titleMessage}\nLink:${postUrl}`); //erro
   }
 
   getFirstParagraph(): string {
@@ -73,15 +65,6 @@ export class ViewPostComponent implements OnInit {
       console.error('Erro ao obter post:', error); 
     });
   }
-  
-
-  /*getPostById(id: number) {
-    this.postService.getPostById(id).subscribe(res => {
-      this.post = res;
-    }, error => {
-      console.error('Method not implemented.');
-    })
-  }*/
 
   editPostBySlug(slug: string, data: any) {
     this.postService.editPostBySlug(slug, data).subscribe(res => {

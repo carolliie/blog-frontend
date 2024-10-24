@@ -28,13 +28,6 @@
     }
 }
 
-@media (max-width: 640px) {
-    nav {
-        background-color: #F3EEE8;
-    }
-}
-
-
 .animate-slide-in {
     animation: fade-in 0.5s ease-out forwards;
     transition: animation 0.3s ease-in-out;
@@ -52,4 +45,19 @@
 
 .app {
     scroll-behavior: smooth;
+}
+
+
+@media (max-width: 640px) {
+    nav {
+        background-color: #F3EEE8;
+    }
+
+    .options {
+        font-size: 50px;
+    }
+
+    .socials {
+        font-size: 26px;
+    }
 }

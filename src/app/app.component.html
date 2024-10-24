@@ -8,7 +8,7 @@
   </nav>
 
   <div *ngIf="menuVisible || isAnimating"
-    class="fixed inset-0 flex flex-col w-full h-full bg-[#F3EEE8] z-50 text-center overflow-y-auto"
+    class="fixed inset-0 flex flex-col w-full h-full bg-[#F3EEE8] z-40 text-center overflow-y-auto"
     [ngClass]="{'animate-slide-in': menuVisible && !isAnimating, 'animate-slide-out': !menuVisible && isAnimating}">
     <a href="/home" class="logo">
       <img src="assets/carollie.svg" alt="carollie logo" />
@@ -53,7 +53,7 @@
         </ul>
         }
       </ul>
-      <div class="flex flex-row justify-evenly font-inter text-4xl font-bold p-10">
+      <div class="socials flex flex-row justify-evenly font-inter text-4xl font-bold p-10">
         <a href="https://www.linkedin.com/in/ana-caroline-vieira-526374274/" class="w-48" id="linkedin"
           #encryptButton (mouseenter)="scrambleLinkedin()" (mouseleave)="stopScrambleLinkedin()">{{ text }}</a>
         <a #encryptButton2 (mouseenter)="scrambleGithub()" (mouseleave)="stopScrambleGithub()"

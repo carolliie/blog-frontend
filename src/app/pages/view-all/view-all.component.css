@@ -50,7 +50,7 @@
 
         h1 {
             font-family: "Snell", serif;
-            font-size: 120px;
+            font-size: 100px;
         }
 
         h3 {
@@ -67,7 +67,7 @@
         span {
             font-size: 18px;
             font-family: "Viaoda Libre", serif;
-            margin: -10px 0px -85px 200px;
+            margin: -10px 0px -65px 200px;
         }
 
         p {
@@ -106,7 +106,7 @@
     }
 
     .posts {
-        padding: 16px 0 36px 0 !important;
+        padding: 16px 0 100px 0 !important;
     }
 
     .post {
