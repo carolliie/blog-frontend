@@ -55,6 +55,7 @@
     h1 {
         font-family: "Snell", serif;
         font-size: 100px;
+        padding-top: 20px;
     }
 
     span {
@@ -79,6 +80,10 @@
         position: absolute;
         transform: translateY(-80%);
         transition: height 0.4s ease-in-out;
+    }
+
+    .lugenius {
+        margin-left: -6%;
     }
 
     .mockup:hover {
@@ -154,14 +159,14 @@
         }
     
         p {
-            font-family: "Inter", serif;
             font-size: 18px;
             font-weight: 600;
         }
     
         .project {
             border-radius: 1700px 1700px 0 0;
-            height: 70vh;
+            height: 80vh;
+            padding: 25px;
 
             h1 {
                 font-size: 65px;
@@ -175,6 +180,19 @@
                 font-size: 15px;
             }
         }
+    }
+    
+    .mockup {
+        height: 25vh !important;
+        transform: translateY(-120%) !important;
+    }
+
+    .mockup:hover {
+        height: 27vh !important;
+    }
+
+    .viwe-button {
+        margin-bottom: 10px !important;
     }
 }
 
