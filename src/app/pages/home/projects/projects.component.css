@@ -63,14 +63,26 @@
     }
 
     p {
-        font-family: "Inter", serif;
-        font-size: 18px;
+        font-family: "Josefin slab", serif;
+        font-size: 20px;
         font-weight: 600;
     }
 
     .project {
         border-radius: 1700px 1700px 0 0;
-        height: 80vh;
+        height: 100vh;
+    }
+
+    .mockup {
+        height: 50vh;
+        margin-bottom: 8vh;
+        position: absolute;
+        transform: translateY(-80%);
+        transition: height 0.4s ease-in-out;
+    }
+
+    .mockup:hover {
+        height: 55vh;
     }
 }
 
