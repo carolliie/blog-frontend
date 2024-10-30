@@ -50,6 +50,27 @@ export class AppComponent {
   ngOnInit(): void {
     this.isLoggedIn = this.storageService.isLoggedIn();
 
+    const navbar = document.getElementById("navbar");
+    var lastScrollTop = 0;
+
+    window.addEventListener("scroll", function() {
+
+      if (navbar) {
+        var scrollTop = window.scrollY || this.document.documentElement.scrollTop;
+
+      if (scrollTop > lastScrollTop) {
+        navbar.style.visibility = "hidden";
+        navbar.style.opacity = "0";
+      } else {
+        navbar.style.visibility = "visible";
+        navbar.style.opacity = "1";
+      }
+
+      lastScrollTop = scrollTop;
+      }
+      
+    })
+
     if (this.isLoggedIn) {
       const user = this.storageService.getUser();
       this.role = user.role;
