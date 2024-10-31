@@ -47,7 +47,7 @@
             class="button bg-black text-white font-semibold rounded-lg flex flex-row items-center justify-center gap-2"
           >
             Send form
-            @if (this.contactForm.valid && !log) {
+            @if (this.isSubmitting && !log) {
             <div class="loader">
               <span></span>
               <span></span>

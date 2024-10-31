@@ -16,6 +16,7 @@ export class FormsComponent {
   email!: string;
   message!: string;
   log = "";
+  isSubmitting = false;
 
   constructor(
     private fb: FormBuilder, private http: HttpClient
@@ -28,6 +29,7 @@ export class FormsComponent {
   }
 
   onSubmit():void {
+    this.isSubmitting = true;
     if (!this.contactForm.valid) {
       this.log = "Form is invalid. Please check the fields.";
       return;
