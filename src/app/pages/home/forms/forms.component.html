@@ -1,40 +1,73 @@
 <div class="bg-[#FFE699]">
-    <div class="pt-20" id="contact">
-        <div class="forms-title flex flex-col justify-center items-center">
-            <h1>let's collaborate!</h1>
-            <span>send a message</span>
-        </div>
-
-        <div class="forms flex flex-row gap-x-12 columns-2 justify-center items-center">
-            <img src="assets/pfp.svg" alt="profile picture" class="pfp">
-
-            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-                <div class="field">
-                    <input type="text" name="name" formControlName="name" class="input" placeholder="Your name">
-                </div>
-
-                <div class="field">
-                    <input type="text" name="email" formControlName="email" class="input" placeholder="Your email">
-                </div>
-
-                <div class="field">
-                    <textarea type="text" name="message" formControlName="message" class="textarea"
-                        placeholder="Type a message..."></textarea>
-
-                </div>
-
-                <div class="field">
-                    <button type="submit" class="button bg-black text-white font-semibold rounded-lg">Send form</button>
-                </div>
-
-                @if (log) {
-                <div
-                    class="log field bg-gray-900 bg-opacity-55 text-white font-inter rounded-lg justify-center items-center">
-                    <p>{{log}}</p>
-                </div>
-                }
-            </form>
-        </div>
+  <div class="pt-20" id="contact">
+    <div class="forms-title flex flex-col justify-center items-center">
+      <h1>let's collaborate!</h1>
+      <span>send a message</span>
     </div>
-    <a href="https://www.shigureni.com"><img src="assets/phone.webp" alt="phone" class="phone h-72"></a>
+
+    <div
+      class="forms flex flex-row gap-x-12 columns-2 justify-center items-center"
+    >
+      <img src="assets/pfp.svg" alt="profile picture" class="pfp" />
+
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div class="field">
+          <input
+            type="text"
+            name="name"
+            formControlName="name"
+            class="input"
+            placeholder="Your name"
+          />
+        </div>
+
+        <div class="field">
+          <input
+            type="text"
+            name="email"
+            formControlName="email"
+            class="input"
+            placeholder="Your email"
+          />
+        </div>
+
+        <div class="field">
+          <textarea
+            type="text"
+            name="message"
+            formControlName="message"
+            class="textarea"
+            placeholder="Type a message..."
+          ></textarea>
+        </div>
+
+        <div class="field">
+          <button
+            type="submit"
+            class="button bg-black text-white font-semibold rounded-lg flex flex-row items-center justify-center gap-2"
+          >
+            Send form
+            @if (this.contactForm.valid && !log) {
+            <div class="loader">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            }
+          </button>
+        </div>
+
+        @if (log) {
+        <div
+          class="log field bg-gray-900 bg-opacity-55 text-white font-inter rounded-lg justify-center items-center"
+        >
+          <p>{{ log }}</p>
+        </div>
+        }
+      </form>
+    </div>
+  </div>
+  <a href="https://www.shigureni.com"
+    ><img src="assets/phone.webp" alt="phone" class="phone h-72"
+  /></a>
 </div>
