@@ -51,7 +51,6 @@
     transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out !important;
 }
 
-
 @media (max-width: 640px) {
     nav {
         background-color: inherit;

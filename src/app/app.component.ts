@@ -69,7 +69,7 @@ export class AppComponent {
       lastScrollTop = scrollTop;
       }
       
-    })
+    });
 
     if (this.isLoggedIn) {
       const user = this.storageService.getUser();
