@@ -1,3 +1,32 @@
+@media (max-width: 640px) {
+    .blog {
+        height: 90vh !important;
+
+        .mockup {
+            height: 25vh !important;
+            transform: translateY(-165%) !important;
+        }
+    }
+
+    .sales {
+        height: 70vh !important;
+
+        .mockup {
+            height: 25vh !important;
+            transform: translateY(-154%) !important;
+        }
+    }
+
+    .petvax {
+        height: 60vh !important;
+
+        .mockup {
+            height: 25vh !important;
+            transform: translateY(-120%) !important;
+        }
+    }
+}
+
 .projects {
     h2 {
         font-family: "Viaoda Libre", serif;
@@ -94,7 +123,8 @@
 @media (max-width: 640px) {
     .projects {
 
-        padding: 150px 0 70px;
+        padding: 30px 80px;
+
 
         h2 {
             font-family: "Viaoda Libre", serif;
@@ -110,8 +140,8 @@
     
         p {
             font-family: "Josefin slab", serif;
-            font-size: 16px;
-            width: 100%;
+            font-size: 14px;
+            width: 100% !important;
             text-align: start;
         }
     
@@ -162,14 +192,15 @@
             font-size: 18px;
             font-weight: 600;
         }
+        
     
         .project {
             border-radius: 1700px 1700px 0 0;
-            height: 80vh;
             padding: 25px;
 
             h1 {
-                font-size: 65px;
+                font-size: 55px;
+                margin-top: -8vh !important;
             }
 
             span {
@@ -178,13 +209,9 @@
 
             p {
                 font-size: 15px;
+                width: 100% !important;
             }
         }
-    }
-    
-    .mockup {
-        height: 25vh !important;
-        transform: translateY(-120%) !important;
     }
 
     .mockup:hover {

@@ -1,4 +1,4 @@
-<div class="welcome flex flex-col justify-center text-center items-center animate-fade-in py-44 mb-40">
+<div class="welcome flex flex-col justify-center text-center items-center animate-fade-in py-40">
   <h2>welcome to my</h2>
   <span>2024</span>
   <h1>portfolio</h1>
@@ -11,52 +11,38 @@
   </div>
 </div>
 
-<div class="stacks bg-[#DCD1C2]" id="stacks">
-  <h3 class="flex justify-center text-center font-semibold">Some of my Stacks</h3>
-  <div class="title flex flex-row justify-center items-center p-96 gap-16">
-    <img (mouseenter)="show('java', $event)" (mouseleave)="hide()" src="assets/Java.svg" alt="java" class="w-20 h-20">
-    <img (mouseenter)="show('postgres', $event)" (mouseleave)="hide()" src="assets/postgres.svg" alt="postgres"
-      class="w-20 h-20">
-    <img (mouseenter)="show('angular', $event)" (mouseleave)="hide()" src="assets/Angular.svg" alt="angular"
-      class="w-20 h-20">
-    <img (mouseenter)="show('spring', $event)" (mouseleave)="hide()" src="assets/spring.svg" alt="spring"
-      class="w-20 h-20">
-    <img (mouseenter)="show('typescript', $event)" (mouseleave)="hide()" src="assets/ts.svg" alt="typescript"
-      class="w-20 h-20">
-    <img (mouseenter)="show('git', $event)" (mouseleave)="hide()" src="assets/git.svg" alt="git" class="w-20 h-20">
-  </div>
-  <div
-    [ngClass]="{'block': isVisible, 'hidden': !isVisible, 'stack-fade-in': isVisible && !isAnimating, 'stack-fade-out': isAnimating}"
-    class="stack bg-white text-[#8E816E] w-56 h-32 rounded shadow font-inter p-3 fixed" [style.left.px]="position.x"
-    [style.top.px]="position.y">
-    <h4 class="font-semibold">{{ currentStack.title }}</h4>
-    <p>{{ currentStack.description }}</p>
-  </div>
-</div>
+<div class="flex flex-row justify-center items-center">
+  <div class="about bg-[#FBFBFB] p-16 m-20">
+    <h1>More about <span class="text-[#88B2C4]">Carole</span>?</h1>
+    <p>“I'm <span class="text-[#88B2C4]">Ana Caroline Vieira</span>, a Computer Science student and software
+      engineering enthusiast. <img src="assets/curl.svg" alt="curl" class="curl h-16 w-16"
+        style="vertical-align: middle; display: inline;"></p>
 
-<div
-  class="click text-start bg-white w-full p-14 absolute flex flex-col justify-center items-center transition-container z-20"
-  style="left: 50%; transform: translateX(-50%);" id="about">
-  <h3 class="cursor-pointer" (click)="showClick()"
-    [ngClass]="{'hidden': isClickVisible, 'stack-fade-in': !isClickVisible,}">CLICK FOR MORE</h3>
+    <p>My stacks are:</p>
 
-  <div class="content" [ngClass]="{'expanded': isClickVisible, 'collapsed': !isClickVisible}">
-    <div>
-      <h1 class="mb-5">More about <span class="text-[#88B2C4]">Carole</span>?</h1>
-      <div>
-        <p>“I'm <span class="text-[#88B2C4]">Ana Caroline Vieira</span>, a Computer Science student and software
-          engineering enthusiast. <img src="assets/curl.svg" alt="curl" class="h-16 w-16"
-            style="vertical-align: middle; display: inline;"></p>
-        <br>
-        <p>As a <span class="text-[#88B2C4]">Computer Science student</span>, I am immersed in the world of technology,
-          looking for new STACKS and skills to
-          <span class="learn">LEARN</span>.“
-        </p>
-      </div>
+    <div class="stacks flex flex-row gap-12 h-20 justify-center my-10">
+      <img src="assets/Java.svg" alt="java">
+      <img src="assets/postgres.svg" alt="postgres">
+      <img src="assets/Angular.svg" alt="angular">
+      <img src="assets/spring.svg" alt="spring">
+      <img src="assets/ts.svg" alt="typescript">
+      <img src="assets/git.svg" alt="git">
     </div>
-    <h3 (click)="hideClick()"
-      class="text-center mt-10 cursor-pointer uppercase hover:text-[#88B2C4] transition-colors hover:transition-colors">
-      Close</h3>
+
+    <p>As a <span class="text-[#88B2C4]">Computer Science student</span>, I am immersed in the world of technology,
+      looking for new STACKS and skills to
+      <span class="learn">LEARN</span>.“
+    </p>
+
+    <div class="button flex flex-row justify-end mt-8">
+      <a class="arrow-button flex flex-row text-end items-center bg-[#FBFBFB] justify-end gap-3 font-inter font-semibold p-2 px-4 transition-all duration-300 hover:bg-black hover:text-[#FBFBFB]"
+        href="/home/#contact">
+        <img src="assets/arrow-button.svg" alt="arrow"
+          class="h-12 transform">
+        <h4 class="transform">Get in contact</h4>
+      </a>
+    </div>
+
   </div>
 </div>
 
