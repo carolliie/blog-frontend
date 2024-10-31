@@ -100,14 +100,14 @@
 
     .project {
         border-radius: 1700px 1700px 0 0;
-        height: 100vh;
+        height: 110vh;
     }
 
     .mockup {
-        height: 50vh;
+        height: 47vh;
         margin-bottom: 8vh;
         position: absolute;
-        transform: translateY(-80%);
+        transform: translateY(-95%);
         transition: height 0.4s ease-in-out;
     }
 
@@ -116,7 +116,31 @@
     }
 
     .mockup:hover {
-        height: 55vh;
+        height: 51vh;
+    }
+
+    .blog {
+        height: 110vh !important;
+
+        .mockup {
+            transform: translateY(-101%) !important;
+        }
+    }
+
+    .sales {
+        height: 120vh !important;
+
+        .mockup {
+            transform: translateY(-97%) !important;
+        }
+    }
+
+    .petvax {
+        height: 100vh !important;
+
+        .mockup {
+            transform: translateY(-89%) !important;
+        }
     }
 }
 
@@ -218,7 +242,7 @@
         height: 27vh !important;
     }
 
-    .viwe-button {
+    .view-button {
         margin-bottom: 10px !important;
     }
 }

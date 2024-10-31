@@ -58,7 +58,7 @@
     }
 
     p {
-        font: 600 50px 'Inter', serif;
+        font: 600 48px 'Inter', serif;
         text-transform: uppercase;
     }
 
@@ -75,7 +75,7 @@
         background: url('/assets/zigzag.svg') no-repeat center;
         background-size: contain;
         position: absolute;
-        bottom: -5px;
+        bottom: -12px;
     }
 
     .arrow-button {
