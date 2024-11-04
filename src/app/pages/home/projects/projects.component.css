@@ -1,32 +1,3 @@
-@media (max-width: 640px) {
-    .blog {
-        height: 90vh !important;
-
-        .mockup {
-            height: 25vh !important;
-            transform: translateY(-165%) !important;
-        }
-    }
-
-    .sales {
-        height: 70vh !important;
-
-        .mockup {
-            height: 25vh !important;
-            transform: translateY(-154%) !important;
-        }
-    }
-
-    .petvax {
-        height: 60vh !important;
-
-        .mockup {
-            height: 25vh !important;
-            transform: translateY(-120%) !important;
-        }
-    }
-}
-
 .projects {
     h2 {
         font-family: "Viaoda Libre", serif;
@@ -120,26 +91,26 @@
     }
 
     .blog {
-        height: 110vh !important;
+        height: 122vh;
 
         .mockup {
-            transform: translateY(-101%) !important;
+            transform: translateY(-50vh);
         }
     }
 
     .sales {
-        height: 120vh !important;
+        height: 122vh;
 
         .mockup {
-            transform: translateY(-97%) !important;
+            transform: translateY(-48vh);
         }
     }
 
     .petvax {
-        height: 100vh !important;
+        height: 110vh;
 
         .mockup {
-            transform: translateY(-89%) !important;
+            transform: translateY(-42vh);
         }
     }
 }
@@ -154,33 +125,33 @@
             font-family: "Viaoda Libre", serif;
             font-size: 50px;
         }
-    
+
         h1 {
             font-family: "Snell", serif;
             font-size: 100px;
             margin-top: -30px;
             margin-left: 50px;
         }
-    
+
         p {
             font-family: "Josefin slab", serif;
             font-size: 14px;
             width: 100% !important;
             text-align: start;
         }
-    
+
         .read {
             margin-top: -20px;
             transform: translate(40%, 50%);
             width: 100%;
-    
+
             p {
                 width: 40%;
                 font-size: 20px;
             }
         }
     }
-    
+
     .floating {
         animation: float 5s ease-in-out infinite;
         position: absolute;
@@ -188,36 +159,36 @@
         margin-top: -40%;
         width: 80px;
     }
-    
+
     .word-container {
         position: relative;
-    
+
         .word {
             position: relative;
         }
-    
+
         .swoosh {
             position: absolute;
         }
     }
-    
+
     .parallax {
         h1 {
             font-family: "Snell", serif;
             font-size: 100px;
         }
-    
+
         span {
             font-family: "Viaoda Libre", serif;
             font-size: 36px;
         }
-    
+
         p {
             font-size: 18px;
             font-weight: 600;
         }
-        
-    
+
+
         .project {
             border-radius: 1700px 1700px 0 0;
             padding: 25px;
@@ -245,16 +216,45 @@
     .view-button {
         margin-bottom: 10px !important;
     }
+
+    .blog {
+        height: 110vh !important;
+
+        .mockup {
+            height: 25vh !important;
+            transform: translateY(-145%) !important;
+        }
+    }
+
+    .sales {
+        height: 90vh !important;
+
+        .mockup {
+            height: 25vh !important;
+            transform: translateY(-147%) !important;
+        }
+    }
+
+    .petvax {
+        height: 90vh !important;
+
+        .mockup {
+            height: 25vh !important;
+            transform: translateY(-130%) !important;
+        }
+    }
 }
 
 @keyframes float {
     0% {
         transform: translateY(0);
-      }
-      50% {
+    }
+
+    50% {
         transform: translateY(-10px) rotate(15deg);
-      }
-      100% {
+    }
+
+    100% {
         transform: translateY(0) rotate(0deg);
-      }
-  }
+    }
+}

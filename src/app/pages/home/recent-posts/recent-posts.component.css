@@ -107,6 +107,11 @@
     font-size: 20px;
     color: white;
     text-decoration: underline;
+    transition: 0.3s ease-in-out;
+}
+
+.view:hover {
+    color: #214859;
 }
 
 @media (max-width: 640px) {

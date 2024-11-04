@@ -1,9 +1,0 @@
-{
-  "routes": [
-    "/blog",
-    "/create-post",
-    "/delete-post",
-    "/home",
-    "/login"
-  ]
-}
