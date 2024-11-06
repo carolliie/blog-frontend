@@ -1,5 +1,12 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import {
+  RouterOutlet,
+  RouterLink,
+  RouterLinkActive,
+  ActivatedRoute,
+  NavigationEnd,
+  Router,
+} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -7,17 +14,29 @@ import { AuthService } from './pages/_services/auth.service';
 import { StorageService } from './pages/_services/storage.service';
 import { EventBusService } from './pages/_shared/event-bus.service';
 import { EditorModule } from '@tinymce/tinymce-angular';
-import { FooterComponent } from "./pages/footer/footer.component";
+import { FooterComponent } from './pages/footer/footer.component';
+import { Title } from '@angular/platform-browser';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, ReactiveFormsModule, CommonModule, FormsModule, EditorModule, FooterComponent],
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
+    ReactiveFormsModule,
+    CommonModule,
+    FormsModule,
+    EditorModule,
+    FooterComponent,
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'blogWeb'; private role: any;
+  title = 'blogWeb';
+  private role: any;
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;
@@ -27,11 +46,11 @@ export class AppComponent {
 
   eventBusSub?: Subscription;
 
-  readonly TARGET_TEXT = "LINKEDIN";
-  readonly TARGET_TEXT2 = "GITHUB";
+  readonly TARGET_TEXT = 'LINKEDIN';
+  readonly TARGET_TEXT2 = 'GITHUB';
   readonly CYCLES_PER_LETTER = 2;
   readonly SHUFFLE_TIME = 100;
-  readonly CHARS = "!@#$%^&*():{};|,.<>/?";
+  readonly CHARS = '!@#$%^&*():{};|,.<>/?';
 
   text: string = this.TARGET_TEXT;
   text2: string = this.TARGET_TEXT2;
@@ -44,31 +63,33 @@ export class AppComponent {
   constructor(
     private storageService: StorageService,
     private authService: AuthService,
-    private eventBusService: EventBusService
-  ) { }
+    private eventBusService: EventBusService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private titleService: Title
+  ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.isLoggedIn = this.storageService.isLoggedIn();
 
-    const navbar = document.getElementById("navbar");
+    const navbar = document.getElementById('navbar');
     var lastScrollTop = 0;
 
-    window.addEventListener("scroll", function() {
-
+    window.addEventListener('scroll', function () {
       if (navbar) {
-        var scrollTop = window.scrollY || this.document.documentElement.scrollTop;
+        var scrollTop =
+          window.scrollY || this.document.documentElement.scrollTop;
 
-      if (scrollTop > lastScrollTop) {
-        navbar.style.visibility = "hidden";
-        navbar.style.opacity = "0";
-      } else {
-        navbar.style.visibility = "visible";
-        navbar.style.opacity = "1";
-      }
+        if (scrollTop > lastScrollTop) {
+          navbar.style.visibility = 'hidden';
+          navbar.style.opacity = '0';
+        } else {
+          navbar.style.visibility = 'visible';
+          navbar.style.opacity = '1';
+        }
 
-      lastScrollTop = scrollTop;
+        lastScrollTop = scrollTop;
       }
-      
     });
 
     if (this.isLoggedIn) {
@@ -84,6 +105,21 @@ export class AppComponent {
     this.eventBusSub = this.eventBusService.on('logout', () => {
       this.logout();
     });
+
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        map(() => {
+          let child = this.activatedRoute.firstChild;
+          while (child?.firstChild) {
+            child = child.firstChild;
+          }
+          return child?.snapshot.data['title'] || 'Carollie';
+        })
+      )
+      .subscribe((title: string) => {
+        this.titleService.setTitle(title);
+      });
   }
 
   scrambleLinkedin() {
@@ -91,7 +127,7 @@ export class AppComponent {
     this.clearIntervalLinkedin();
 
     this.intervalRefLinkedin = setInterval(() => {
-      const scrambled = this.TARGET_TEXT.split("")
+      const scrambled = this.TARGET_TEXT.split('')
         .map((char, index) => {
           if (pos / this.CYCLES_PER_LETTER > index) {
             return char;
@@ -102,7 +138,7 @@ export class AppComponent {
 
           return randomChar;
         })
-        .join("");
+        .join('');
 
       this.text = scrambled;
       pos++;
@@ -118,7 +154,7 @@ export class AppComponent {
     this.clearIntervalGithub();
 
     this.intervalRefGithub = setInterval(() => {
-      const scrambled = this.TARGET_TEXT2.split("")
+      const scrambled = this.TARGET_TEXT2.split('')
         .map((char, index) => {
           if (pos / this.CYCLES_PER_LETTER > index) {
             return char;
@@ -129,7 +165,7 @@ export class AppComponent {
 
           return randomChar;
         })
-        .join("");
+        .join('');
 
       this.text2 = scrambled;
       pos++;
@@ -165,7 +201,7 @@ export class AppComponent {
   }
 
   showMenu() {
-    if (this.menuVisible = !this.menuVisible) {
+    if ((this.menuVisible = !this.menuVisible)) {
       this.isAnimating = false;
       this.menuVisible = true;
     } else {
@@ -176,7 +212,6 @@ export class AppComponent {
         this.isAnimating = false;
       }, 500);
     }
-
   }
 
   hideMenu() {
@@ -185,12 +220,12 @@ export class AppComponent {
     setTimeout(() => {
       this.menuVisible = false;
       this.isAnimating = false;
-    }, 500)
+    }, 500);
   }
 
   logout(): void {
     this.authService.logout().subscribe({
-      next: res => {
+      next: (res) => {
         console.log(res);
         this.storageService.clean();
 
@@ -198,7 +233,7 @@ export class AppComponent {
       },
       error: (err: any) => {
         console.log(err);
-      }
+      },
     });
   }
 }
