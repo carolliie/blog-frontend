@@ -1,6 +1,6 @@
 <div id="app" class="app !scroll-smooth">
   <nav class="flex flex-row justify-between fixed w-full z-40" id="navbar">
-    <a href="/home" class="logo">
+    <a href="/" class="logo">
       <img src="assets/carollie.svg" alt="carollie logo" />
     </a>
     <img src="assets/menu.svg" class="w-10 h-10 m-12" alt="menu icon" [ngClass]="{'hidden': menuVisible}"
@@ -10,13 +10,13 @@
   <div *ngIf="menuVisible || isAnimating"
     class="fixed inset-0 flex flex-col w-full h-full bg-[#F3EEE8] z-40 text-center overflow-y-auto"
     [ngClass]="{'animate-slide-in': menuVisible && !isAnimating, 'animate-slide-out': !menuVisible && isAnimating}">
-    <a href="/home" class="logo">
+    <a href="/" class="logo">
       <img src="assets/carollie.svg" alt="carollie logo" />
     </a>
     <div class="options mb-20">
       <ul class="justify-center mt-2 text-black">
         <li>
-          <a href="/home" class="" routerLink="/home" routerLinkActive="/home" (click)="showMenu()">home</a>
+          <a href="/" class="" routerLink="/" routerLinkActive="/" (click)="showMenu()">home</a>
         </li>
 
         <li>

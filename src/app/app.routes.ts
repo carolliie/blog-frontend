@@ -9,14 +9,14 @@ import { DeletePostComponent } from './pages/delete-post/delete-post.component';
 import { EditPostComponent } from './pages/edit-post/edit-post.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'create-post', component: CreatePostComponent },
-  { path: 'blog', component: ViewAllComponent},
+  { path: '', component: HomeComponent, pathMatch: 'full', data: { title: 'carollie' } },
+  { path: 'create-post', component: CreatePostComponent,  data: { title: 'Creating post...' } },
+  { path: 'blog', component: ViewAllComponent,  data: { title: "carollie's blog" } },
   { path: 'view-post/:slug', component: ViewPostComponent},
   { path: 'delete-post', component: DeletePostComponent},
-  { path: 'edit-post/:slug', component: EditPostComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'home', component: HomeComponent}
+  { path: 'edit-post/:slug', component: EditPostComponent,  data: { title: 'Editing post...' } },
+  { path: 'login', component: LoginComponent,  data: { title: 'Login - carollie' } },
+  { path: 'home', component: HomeComponent, data: { title: 'carollie' }}
 ];
 
 @NgModule({
