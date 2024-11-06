@@ -45,6 +45,11 @@
 .button {
   width: 300px;
   height: 50px;
+  transition: 0.3s ease-in-out;
+}
+
+.button:hover {
+  background-color: #363636;
 }
 
 .loader {
