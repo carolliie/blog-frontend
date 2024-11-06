@@ -19,7 +19,7 @@
   </div>
   <div
     class="posts grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 justify-center px-40 py-36 sm:mt-16 sm:pt-16 animate-fade-in">
-    <div *ngFor="let item of reversedPosts, let i = index" class="max-w-xl flex flex-col items-center justify-between">
+    <div *ngFor="let item of allPosts, let i = index" class="max-w-xl flex flex-col items-center justify-between">
       <article [ngStyle]="{
         'background-image': 'url(' + item.img + ')',
         'background-size': 'cover',
@@ -58,7 +58,7 @@
     </div>
     <div
       class="posts grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 justify-center px-40 py-36 sm:mt-16 sm:pt-16 animate-fade-in">
-      <div *ngFor="let item of reversedPosts" class="max-w-xl flex flex-col items-center justify-between">
+      <div *ngFor="let item of allPosts, let i = index" class="max-w-xl flex flex-col items-center justify-between">
         <article [ngStyle]="{
         'background-image': 'url(' + item.img + ')',
         'background-size': 'cover',

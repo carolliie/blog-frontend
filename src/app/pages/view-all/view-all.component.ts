@@ -28,13 +28,10 @@ export class ViewAllComponent implements OnInit {
   getAllPosts() {
     this.postService.getAllPosts().subscribe(res => {
       this.allPosts = res;
+      this.allPosts.reverse();
     }, error => {
       console.error('Method not implemented.');
     })
-  }
-
-  get reversedPosts() {
-    return [...this.allPosts].reverse();
   }
 
   getPostBySlug(slug: string) {
