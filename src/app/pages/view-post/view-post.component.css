@@ -7,6 +7,24 @@
     font-size: 60px;
 }
 
+.post-excerpt::first-letter {
+    font-size: 50px;
+    font-weight: bold;
+    color: #88B2C4;
+    text-transform: capitalize;
+    font-family: "Viaoda Libre", serif;
+}
+
+.post-excerpt {
+    font-family: "Inter", serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.author h3 {
+    font-family: "Viaoda Libre", serif;
+}
+
 @media (max-width: 640px) {
     .post-name {
         font-size: 26px !important;
@@ -42,16 +60,13 @@
             width: 90%;
         }
     }
-}
 
-.post-excerpt::first-letter {
-    font-size: 45px;
-    font-weight: bold;
-    color: #88B2C4;
-    text-transform: capitalize;
-    font-family: "Viaoda Libre", serif;
-}
-
-.author h3 {
-    font-family: "Viaoda Libre", serif;
+    .post-excerpt::first-letter {
+        font-size: 45px;
+    }
+    
+    .post-excerpt {
+        font-size: 15px;
+    }
+    
 }

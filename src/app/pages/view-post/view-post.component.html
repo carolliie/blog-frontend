@@ -5,7 +5,7 @@
 
         <div class="paragraph lg:p-20 lg:flex lg:flex-row sm:flex-col lg:columns-2 lg:justify-evenly sm:justify-center">
             <div class="mb-4 lg:w-2/5 sm:w-full">
-                <div class="text-black mt-4 post-excerpt font-inter" [innerHTML]="getFirstParagraph()"></div>
+                <div class="text-black mt-4 post-excerpt" [innerHTML]="getFirstParagraph()"></div>
                 <span *ngIf="post.tags?.length > 0" class="text-gray-500 text-sm text-center font-inter">Palavras-chave: <span class="capitalize">{{ post.tags }}</span></span>
             </div>
 
@@ -27,11 +27,11 @@
             </div>
         </div>
 
-        <div class="content flex flex-col px-52 justify-center items-center">
-            <div class="text-black mt-4 post-content font-inter" [innerHTML]="getContentWithoutFirstParagraph()"></div>
+        <div class="content flex flex-col px-36 justify-center items-center">
+            <div class="text-black mt-4 post-content font-inter font-normal" [innerHTML]="getContentWithoutFirstParagraph()"></div>
         </div>
 
-        <div class="author lg:px-52 lg:py-16 flex lg:flex-row sm:flex-col justify-between items-center w-full">
+        <div class="author lg:px-40 lg:py-16 flex lg:flex-row sm:flex-col justify-between items-center w-full">
             <div class="author-n flex flex-row gap-8 justify-center items-center">
                 <img src="assets/author.svg" alt="author" class="pfp"/>
                 <div class="w-72">
