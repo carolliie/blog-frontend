@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ViewPostComponent } from './pages/view-post/view-post.component';
 import { DeletePostComponent } from './pages/delete-post/delete-post.component';
 import { EditPostComponent } from './pages/edit-post/edit-post.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full', data: { title: 'Carollie' } },
@@ -16,7 +17,8 @@ export const routes: Routes = [
   { path: 'delete-post', component: DeletePostComponent},
   { path: 'edit-post/:slug', component: EditPostComponent,  data: { title: 'Editing post...' } },
   { path: 'login', component: LoginComponent,  data: { title: 'Login - Carollie' } },
-  { path: 'home', component: HomeComponent, data: { title: 'Carollie' }}
+  { path: 'home', component: HomeComponent, data: { title: 'Carollie' }},
+  { path: '**', pathMatch: 'full', component: PageNotFoundComponent, data: { title: 'Page not found' }}
 ];
 
 @NgModule({

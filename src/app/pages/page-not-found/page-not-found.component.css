@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&family=Young+Serif&display=swap');
+
+
+.error {
+    color: #D73234;
+    background-color: rgba(248, 193, 202, 0.54);
+    
+
+    h1 {
+        font-family: "Young serif", serif;
+        font-size: 120px;
+        width: 57%;
+        text-align: center;
+        line-height: 130px;
+    }
+
+    p {
+        font-family: "Josefin slab", serif;
+        font-weight: bold;
+        font-size: 26px;
+        margin-bottom: 40px;
+        width: 65%;
+    }
+
+    .cat {
+        height: 500px;
+        animation: floatingCat 2s ease-in-out infinite;
+    }
+}
+
+@media (max-width: 640px) {
+    .error {
+        flex-direction: column;
+        padding: 90px 20px;
+        text-align: center;
+        
+    
+        h1 {
+            font-size: 90px;
+            width: 100%;
+        }
+    
+        p {
+            font-size: 20px;
+            width: 100%;
+        }
+    
+        .cat {
+            margin-top: 50px;
+            height: 300px;
+            animation: floatingCat 2s ease-in-out infinite;
+        }
+    }
+}
+
+@keyframes floatingCat {
+    0% {
+        transform: translateY(0%);
+    }
+    50% {
+        transform: translateY(-5%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
