@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Snell";
+  src: url("/src/assets/fonts/SnellBT-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .forms-title {
   h1 {
     font-family: "Snell";

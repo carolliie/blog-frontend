@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: "Snell";
+    src: url("/src/assets/fonts/SnellBT-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+
 @keyframes fade-in {
     0% {
         opacity: 0;
